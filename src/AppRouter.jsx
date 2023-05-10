@@ -6,9 +6,12 @@ import { ListHotel } from "./hotel/components/ListHotel"
 import { CreateHotel } from "./hotel/components/CreateHotel"
 import { isAdminAppAuthenticated, isAdminHotelAuthenticated, isUserLogged, isUsuarioAuthenticated } from "./login/helpers/isUserAuthenticated"
 import { ListServicios } from "./servicios/components/ListServicios"
-import { Home } from "./home/components/home"
+import { Home } from "./home/components/Home"
 import { PanelAdminApp } from "./panelAdminApp/components/PanelAdminApp"
 import { PanelAdminHotel } from "./panelAdminHotel/components/PanelAdminHotel"
+import { ListUsuario } from "./usuario/components/ListUsuario"
+import { CreateUsuario } from "./usuario/components/CreateUsuario"
+import { Footer } from "./Footer"
 
 export const AppRouter = () => {
     return (
@@ -18,6 +21,10 @@ export const AppRouter = () => {
                 {/* Generales*/}
                 {/* Chequea si  el usuario esta logeado o no*/}
                 <Route path="/login" element={!isUserLogged() ? <Login/> : <Navigate to="/home" />}>
+                </Route>
+                <Route path="/perfil" element={isUserLogged() ? <ListUsuario/> : <Navigate to="/login" />}>
+                </Route>
+                <Route path="/signin" element={!isUserLogged() ? <CreateUsuario/> : <Navigate to="/login" />}>
                 </Route>
 
                 {/* RUTAS SOLO PARA ADMIN_APP*/}
@@ -43,6 +50,7 @@ export const AppRouter = () => {
                 <Route path="/home" element={isUsuarioAuthenticated() ? (<Home/>) : (<Navigate to="/login" />) } >
                 </Route>
             </Routes>
+            <Footer/>
         </>
     )
 }

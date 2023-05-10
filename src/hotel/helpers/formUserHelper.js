@@ -78,9 +78,9 @@ export const formUserHelper = async (hotel, option) => {
                     confirmButtonText: "Go  !"
                 }).then((r) => {
                     if (r.isConfirmed) {
-                        window.location.href = '/'
+                        window.location.href = '/hoteles'
                     } else {
-                        window.location.href = '/'
+                        window.location.href = '/hoteles'
                     }
                 })
             }

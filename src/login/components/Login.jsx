@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { apiLogin } from "../api/apiLogin";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import { NavbarInicial } from "./NavbarInicial";
 //import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   //Manejo del state del email y del password
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
-  //const navigate = useNavigate(); // create a navigate function
 
   const handleSubmit = async (event) => {
     event.preventDefault(); //Para que la pagina no se recarge
@@ -38,10 +39,9 @@ export const Login = () => {
 
   return (
     <>
+      <NavbarInicial></NavbarInicial>
       <main className="contenedor seccion contenido-centrado">
-        <h1>Iniciar sesion</h1>
-        <div className="alerta error">El email es obligatorio o no es valido</div>
-        <div className="alerta error">El password es obligatorio</div>
+        <h1>Iniciar sesión</h1>
         <form onSubmit={handleSubmit} className="formulario">
           <fieldset>
             <legend>Email y Password</legend>
@@ -70,6 +70,7 @@ export const Login = () => {
             <input type="submit" value="Iniciar Sesion" className="boton boton-verde" />
           </fieldset>
         </form>
+        <Link to="/signin" className="boton boton-azul w-100">Eres nuevo? Crea una cuenta</Link>
       </main>
     </>
   );

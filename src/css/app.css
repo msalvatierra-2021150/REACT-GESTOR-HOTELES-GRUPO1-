@@ -253,6 +253,23 @@ h4 {
     background-color: #619800;
     cursor: pointer;
 }
+
+.boton-azul {
+    background-color:#20639b ;
+    border: none;
+    color: #fff;
+    display: inline-block;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    padding: 1rem 3rem;
+    text-align: center;
+    text-decoration: none;
+}
+.boton-azul:hover {
+    background-color: #3c99dc ;
+    cursor: pointer;
+}
+
 .boton-rojo-block {
     background-color: #bd0707;
     border: none;
