@@ -3,6 +3,7 @@ import logo from "./img/logo.svg"
 import dark from "./img/dark-mode.svg";
 import barras from "./img/barras.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const NavBar = () => {
     const [isOn, setIsOn ] = useState(false);
