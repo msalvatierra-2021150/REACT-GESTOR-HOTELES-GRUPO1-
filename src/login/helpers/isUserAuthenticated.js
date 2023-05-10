@@ -1,4 +1,5 @@
 export const isAdminHotelAuthenticated = () => {
+
     return isUserAuthenticated("ADMIN_HOTEL");
   };
   
@@ -34,8 +35,5 @@ export const isAdminHotelAuthenticated = () => {
     if (localStorage.getItem('token')) {
         return true;
     }
-
     return false;
-
 }
-  

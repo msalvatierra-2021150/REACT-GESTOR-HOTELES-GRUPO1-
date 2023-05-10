@@ -32,6 +32,7 @@ export const NavBar = () => {
                         <div className="derecha">
                           <img className="dark-mode-boton" src={dark} />
                           <nav className={isOn ? "navegacion mostrar" : "navegacion"}>
+                          {(localStorage.getItem('idReservacion') !== null) && (<Link to={`/reservas-show?reserva=${localStorage.getItem('idReservacion')}`}>Mis Reservaciones</Link>)}
                             <a href="#">Reservar</a>
                             <a href="#">Nosotros</a>
                             <a href="#">Contacto</a>
@@ -45,4 +46,4 @@ export const NavBar = () => {
             } 
         </>
     )
-}
+  }

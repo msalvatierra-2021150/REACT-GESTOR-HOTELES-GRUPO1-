@@ -9,6 +9,7 @@ export const PanelAdminApp = () => {
       <Link to="/hoteles" className="boton boton-verde">CRUD Hoteles</Link>
       <p> Ver Perfil, editarlo y eliminarlo</p>
       <Link to="/perfil" className="boton boton-verde">Perfil Usuario</Link>
+
     </>
   )
 }

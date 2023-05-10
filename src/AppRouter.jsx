@@ -13,6 +13,14 @@ import { ListUsuario } from "./usuario/components/ListUsuario"
 import { CreateUsuario } from "./usuario/components/CreateUsuario"
 import { Footer } from "./Footer"
 
+//PARTE REACT JHON
+import { ListHabitaciones } from "./home/habitaciones/components/ListHabitaciones"
+import { CreateReserva } from "./home/reservaciones/components/CreateReserva"
+import { AddHabitacion } from "./home/reservaciones/components/AddHabitacion"
+import { ListReserva } from "./home/reservaciones/components/ListReserva"
+import { ListHabitacionesHotel } from "./home/habitaciones/components/ListHabitacionesHotel"
+
+
 export const AppRouter = () => {
     return (
         <>
@@ -25,6 +33,8 @@ export const AppRouter = () => {
                 <Route path="/perfil" element={isUserLogged() ? <ListUsuario/> : <Navigate to="/login" />}>
                 </Route>
                 <Route path="/signin" element={!isUserLogged() ? <CreateUsuario/> : <Navigate to="/login" />}>
+                </Route>
+                <Route path="/login" element={!isUserLogged() ? <Login /> : <Navigate to="/home" />}>
                 </Route>
 
                 {/* RUTAS SOLO PARA ADMIN_APP*/}
@@ -48,6 +58,22 @@ export const AppRouter = () => {
                 {/* RUTAS SOLO PARA USUARIOS*/}
                 {/* FUNCIONES DEL USUARIO AL LOGEARSE*/}
                 <Route path="/home" element={isUsuarioAuthenticated() ? (<Home/>) : (<Navigate to="/login" />) } >
+                </Route>
+
+                <Route path="/home" element={isUsuarioAuthenticated() ? (<Home />) : (<Navigate to="/login" />)} >
+                </Route>
+                {/* FUNCIONES DEL USUARIO EN HABITACIONES */}
+                <Route path="/habitaciones" element={isUsuarioAuthenticated() ? (<ListHabitaciones />) : (<Navigate to="/login" />)} >
+                </Route>
+                {/* FUNCIONES DEL USUARIO EN HABITACIONES */}
+                <Route path="/habitaciones-hotel" element={isUsuarioAuthenticated() ? (<ListHabitacionesHotel />) : (<Navigate to="/login" />)} >
+                </Route>
+                {/* FUNCIONES DEL USUARIO EN RESERVACIONES */}
+                <Route path="/reservas-create" element={isUsuarioAuthenticated() ? (<CreateReserva />) : (<Navigate to="/login" />)} >
+                </Route>
+                <Route path="/reservas-add" element={isUsuarioAuthenticated() ? (<AddHabitacion />) : (<Navigate to="/login" />)} >
+                </Route>
+                <Route path="/reservas-show" element={isUsuarioAuthenticated() ? (<ListReserva />) : (<Navigate to="/login" />)} >
                 </Route>
             </Routes>
             <Footer/>

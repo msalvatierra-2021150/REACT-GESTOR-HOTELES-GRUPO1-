@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form";
-import { formOptions, formUserHelper } from "../helpers/formUserHelper";
+import { formOptions, formUserHelper } from "../helpers/formHotelHelper";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useEffect } from "react";
-import { apiUsuario,apiDepartamento } from "../api/apiHotel";
+import { apiUsuario, apiDepartamento } from "../api/apiHotel";
 //HotelProp es mi modelo
 export const FormHotel = ({ hotelProp, titleButton, option }) => {
     const [usuario, setUsuario] = useState([]);
@@ -13,54 +12,36 @@ export const FormHotel = ({ hotelProp, titleButton, option }) => {
 
     const viewUserlList = async () => {
         const getListUsersFromAPI = await apiUsuario();
-        
         setUsuario(getListUsersFromAPI);
-        
-        
-      };
-      const viewDepList = async ()=>{
+    };
+
+    const viewDepList = async () => {
         const getListDepartamentos = await apiDepartamento();
-
         setDepartamento(getListDepartamentos);
-        
-    }
-      useEffect(() => {
-        viewUserlList();
-        viewDepList()
-      }, []);
+    };
 
-    
+    useEffect(() => {
+        viewUserlList();
+        viewDepList();
+    }, []);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm(formOptions)
+    } = useForm(formOptions);
 
+    useEffect(() => { setHotel({ ...hotel }); }, []);
 
-    useEffect(() => {
-        setHotel({ ...hotel });
-    }, [])
+    const crud = async () => await formUserHelper(hotel, option);
 
-    const crud = async () => {
+    const idUser = (user) => setHotel(() => ({ ...hotel, usuario: user._id }));
 
-        await formUserHelper(hotel, option);
+    const idDepartamento = (dep) => setHotel(() => ({ ...hotel, departamento: dep._id }));
 
-    }
-    const idUser = (user) => {
-  
-        setHotel(() => ({ ...hotel, usuario: user._id }));
-    }
-
-    const idDepartamento = (dep) => {
-  
-        setHotel(() => ({ ...hotel, departamento: dep._id }));
-    }
-    console.log(hotel);
     return (
         <>
-            <main >
-            <Link className="boton boton-verde" to="/hoteles">Volver</Link>
+            <main>
                 <form className="formulario" onSubmit={handleSubmit(crud)}>
                     <fieldset className="mt-5">
                         <legend>Informacion General</legend>
@@ -71,7 +52,7 @@ export const FormHotel = ({ hotelProp, titleButton, option }) => {
                             className="form-control"
                             value={hotel.nombre}
                             onChange={({ target: { value } }) => {
-                                setHotel(() => ({ ...hotel,nombre: value }));
+                                setHotel(() => ({ ...hotel, nombre: value }));
                             }
                             }
                         />
@@ -91,20 +72,20 @@ export const FormHotel = ({ hotelProp, titleButton, option }) => {
                         <label htmlFor="departamento">Departamento</label>
                         <Dropdown>
                             <Dropdown.Toggle variant="success" className="w-100" id="dropdown-basic">
-                               Departamentos
+                                Departamentos
                             </Dropdown.Toggle>
 
-                            <Dropdown.Menu  className="w-100">
+                            <Dropdown.Menu className="w-100">
                                 {
-                                    departamentoIds.map((d)=>{
-                                        return(
-                                            <Dropdown.Item 
-                                            {...register("departamento")}
-                                            value={hotel.departamento}
-                                            key={d._id} 
-                                            onClick={()=> idDepartamento(d)}
+                                    departamentoIds.map((d) => {
+                                        return (
+                                            <Dropdown.Item
+                                                {...register("departamento")}
+                                                value={hotel.departamento}
+                                                key={d._id}
+                                                onClick={() => idDepartamento(d)}
                                             >
-                                                {d.nombre} 
+                                                {d.nombre}
                                             </Dropdown.Item>
                                         )
                                     })
@@ -132,20 +113,20 @@ export const FormHotel = ({ hotelProp, titleButton, option }) => {
                         <label >Usuarios</label>
                         <Dropdown>
                             <Dropdown.Toggle variant="success" className="w-100" id="dropdown-basic">
-                               Usuarios
+                                Usuarios
                             </Dropdown.Toggle>
 
-                            <Dropdown.Menu  className="w-100">
+                            <Dropdown.Menu className="w-100">
                                 {
-                                    usuario.map((u)=>{
-                                        return(
-                                            <Dropdown.Item 
-                                            {...register("usuario")}
-                                            value={hotel.usuario}
-                                            key={u._id} 
-                                            onClick={()=> idUser(u)}
+                                    usuario.map((u) => {
+                                        return (
+                                            <Dropdown.Item
+                                                {...register("usuario")}
+                                                value={hotel.usuario}
+                                                key={u._id}
+                                                onClick={() => idUser(u)}
                                             >
-                                                {u.nombre} 
+                                                {u.nombre}
                                             </Dropdown.Item>
                                         )
                                     })
@@ -200,19 +181,6 @@ export const FormHotel = ({ hotelProp, titleButton, option }) => {
 
                         />
                         {errors.descripcion && (<span>{errors.descripcion.message}</span>)}
-
-                        <label htmlFor="eventos">Eventos</label>
-                        <input
-                            {...register("eventos")}
-                            type="text"
-                            className="form-control"
-                            value={hotel.eventos}
-                            onChange={({ target: { value } }) => {
-                                setHotel(() => ({ ...hotel, eventos: value }));
-                            }}
-
-                        />
-                        {errors.eventos && (<span>{errors.eventos.message}</span>)}
                     </fieldset>
                     <button type="submit" className="btn btn-success" onClick={crud}>{titleButton}</button>
                 </form>

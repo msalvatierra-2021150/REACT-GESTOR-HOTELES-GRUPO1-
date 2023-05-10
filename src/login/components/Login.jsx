@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { apiLogin } from "../api/apiLogin";
 import Swal from "sweetalert2";
+
 import { Link } from "react-router-dom";
 import { NavbarInicial } from "./NavbarInicial";
-//import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   //Manejo del state del email y del password
@@ -25,6 +25,7 @@ export const Login = () => {
             const decodedPayload = JSON.parse(atob(payload));
             const userRole = decodedPayload.rol;
             console.log(userRole);
+
           if (userRole == "ADMIN_APP") {
             window.location.href = "/panel-adminapp";
           } else if (userRole == "ADMIN_HOTEL") {
@@ -71,6 +72,7 @@ export const Login = () => {
           </fieldset>
         </form>
         <Link to="/signin" className="boton boton-azul w-100">Eres nuevo? Crea una cuenta</Link>
+
       </main>
     </>
   );
