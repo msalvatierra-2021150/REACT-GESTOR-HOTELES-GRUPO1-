@@ -6,7 +6,7 @@ export const Home = () => {
     <>
         <div>Home</div>
           <p>Ejecuta tal consulta o irse a crud tal</p>
-          <Link className="boton boton-verde"> A la pagina de tu funcionalidad</Link>
+          <Link className="boton boton-verde" to='/hoteles-lista'>Lista Hoteles</Link>
     </>
   )
 }

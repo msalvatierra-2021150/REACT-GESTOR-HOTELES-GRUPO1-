@@ -6,7 +6,9 @@ export const PanelAdminHotel = () => {
     <>
     <div>PanelAdminHotel</div>
       <p>Ejecuta tal consulta o irse a crud tal</p>
-      <Link className="boton boton-verde"> A la pagina de tu funcionalidad</Link>
+      
+      <Link className="boton boton-verde mx-2" to="/lista-hoteles">Lista de hoteles</Link>
+
     </>
   )
 }
