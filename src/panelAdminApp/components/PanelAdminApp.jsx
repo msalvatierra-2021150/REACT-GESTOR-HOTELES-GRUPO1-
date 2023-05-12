@@ -10,6 +10,8 @@ export const PanelAdminApp = () => {
       <p> Ver Perfil, editarlo y eliminarlo</p>
       <Link to="/perfil" className="boton boton-verde">Perfil Usuario</Link>
 
-    </>
+      <p> CRUD Roles y consulta 5.	Puede ver los eventos de un hotel en específico</p>
+      <Link to="/roles" className="boton boton-verde">CRUD Roles</Link>
+ </>   
   )
 }
