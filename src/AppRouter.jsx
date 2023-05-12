@@ -24,6 +24,11 @@ import { ListHabitacionesHotel } from "./home/habitaciones/components/ListHabita
 import { ListRol } from "./panelAdminApp/components/rol/components/ListRol"
 import { CreateRol } from "./panelAdminApp/components/rol/components/CreateRol"
 
+//Parte REACT ANDRES
+import { ListDepartamentos } from "./panelAdminApp/components/departamentos/components/ListDepartamentos"
+import { ListUsuarios } from "./panelAdminApp/components/usuarios/components/ListUsuarios"
+import { CreateDepartamentos } from "./panelAdminApp/components/departamentos/components/CreateDepartamentos"
+
 export const AppRouter = () => {
     return (
         <>
@@ -56,6 +61,15 @@ export const AppRouter = () => {
                 </Route>
                 {/* Chequea si es ADMIN_APP para redirigirlo al agregar Rol*/}
                 <Route path="/create-rol" element={isAdminAppAuthenticated() ? (<CreateRol />) : (<Navigate to="/login" />) } >
+                </Route>
+                {/* Chequea si es ADMIN_APP para redirigirlo al panel de control Departamentos*/}
+                <Route path="/departamentos" element={isAdminAppAuthenticated() ? (<ListDepartamentos />) : (<Navigate to="/login" />) } >
+                </Route>
+                {/* Chequea si es ADMIN_APP para redirigirlo al agregar Departamentos*/}
+                <Route path="/create-departamento" element={isAdminAppAuthenticated() ? (<CreateDepartamentos />) : (<Navigate to="/login" />) } >
+                </Route>
+                {/* Chequea si es ADMIN_APP para redirigirlo al panel de control Usuarios*/}
+                <Route path="/usuarios" element={isAdminAppAuthenticated() ? (<ListUsuarios />) : (<Navigate to="/login" />) } >
                 </Route>
                 
                 {/* RUTAS SOLO PARA ADMIN_HOTEL*/}

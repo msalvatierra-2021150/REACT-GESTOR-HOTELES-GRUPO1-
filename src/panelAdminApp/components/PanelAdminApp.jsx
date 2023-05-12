@@ -12,6 +12,12 @@ export const PanelAdminApp = () => {
 
       <p> CRUD Roles y consulta 5.	Puede ver los eventos de un hotel en específico</p>
       <Link to="/roles" className="boton boton-verde">CRUD Roles</Link>
+
+      <p> CRUD Departamentos</p>
+      <Link to="/departamentos" className="boton boton-verde">CRUD Departamentos</Link>
+
+      <p>Listar Usuarios</p>
+      <Link to="/usuarios" className="boton boton-verde">Listar Usuarios</Link>
  </>   
   )
 }

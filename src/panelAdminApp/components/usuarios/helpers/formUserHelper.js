@@ -1,5 +1,5 @@
 import Swal from "sweetalert2"
-import { apiHotelCreate,apiHotelUpdate } from "../api/apiHotel";
+import { apiDepartamentosCreate,apiDepartamentosUpdate } from "../api/apiDepartamentos";
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -26,16 +26,11 @@ export const formUserHelper = async (hotel, option) => {
     switch (option) {
         case 1:
             resultado = await apiHotelCreate(
-                hotel.nombre,
-                hotel.direccion,
-                hotel.departamento,
-                hotel.nit,
-                hotel.rating,
-                hotel.numero_reservaciones,
-                hotel.img,
-                hotel.descripcion,
-                hotel.usuario,
-                hotel.eventos
+                usuario.id,
+                usuario.nombre,
+                usuario.correo, 
+             
+
             );
            
             if (resultado) {
@@ -47,9 +42,9 @@ export const formUserHelper = async (hotel, option) => {
                     confirmButtonText: "Go  !"
                 }).then((r) => {
                     if (r.isConfirmed) {
-                        window.location.href = '/hoteles'
+                        window.location.href = '/Usuario'
                     } else {
-                        window.location.href = '/hoteles'
+                        window.location.href = '/Usuario'
                     }
                 })
             }
@@ -57,16 +52,10 @@ export const formUserHelper = async (hotel, option) => {
 
         case 2:
             resultado = await apiHotelUpdate(
-                hotel._id,
-                hotel.nombre,
-                hotel.direccion,
-                hotel.departamento,
-                hotel.nit,
-                hotel.rating,
-                hotel.numero_reservaciones,
-                hotel.img,
-                hotel.decripcion,
-                hotel.usuario,
+                usuario.id,
+                usuario.nombre,
+                usuario.correo, 
+                
             );
            
             if (resultado) {
@@ -78,9 +67,9 @@ export const formUserHelper = async (hotel, option) => {
                     confirmButtonText: "Go  !"
                 }).then((r) => {
                     if (r.isConfirmed) {
-                        window.location.href = '/hoteles'
+                        window.location.href = '/'
                     } else {
-                        window.location.href = '/hoteles'
+                        window.location.href = '/'
                     }
                 })
             }
