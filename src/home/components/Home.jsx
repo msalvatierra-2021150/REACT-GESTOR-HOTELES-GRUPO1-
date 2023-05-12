@@ -9,9 +9,14 @@ export const Home = () => {
       <div>Home</div>
       <p> Ver Perfil, editarlo y eliminarlo</p>
       <Link to="/perfil" className="boton boton-verde">Perfil Usuario</Link>
-      <p>Ejecuta tal consulta o irse a crud tal</p>
+      <p>Buscador de hotel</p>
       <SearchHotel />
       <Link className="boton boton-verde" to={"/habitaciones"}>Habitaciones</Link>
+      <p>Muestra las facturas del cliente</p>
+      <Link to="/factura" className="boton boton-verde">Factura</Link>
+      <p>Listar Servicios Cliente</p>
+      <Link to="/carrito-servicios" className="boton boton-verde">Servicios</Link>
+      
     </>
   )
 }

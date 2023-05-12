@@ -40,6 +40,13 @@ import { ListTipoEvento } from "./tipoEvento/components/ListTipoEvento"
 import { CreateServicio } from "./servicios/components/CreateServicio"
 import { CreateTipoEvento } from "./tipoEvento/components/CreateTipoEvento"
 
+//PARTE REACT AMBROSIO
+import ListFactura from "./Factura/components/ListFactura";
+import { ListEvento } from "./panelAdminHotel/components/Evento/components/ListEvento";
+import { CreateEvento } from "./panelAdminHotel/components/Evento/components/CreateEvento";
+import { ListCarrServicios } from "./home/components/carritoServicio/components/ListCarrServicios";
+import { ListCarr } from "./home/components/carritoServicio/components/ListCarr";
+import { SimpleBarras } from "./panelAdminApp/components/graficas/components/SimpleBarras";
 
 export const AppRouter = () => {
     return (
@@ -54,7 +61,8 @@ export const AppRouter = () => {
                 </Route>
                 <Route path="/signin" element={!isUserLogged() ? <CreateUsuario/> : <Navigate to="/login" />}>
                 </Route>
-
+                <Route path="/factura" element={isAdminAppAuthenticated() || isAdminHotelAuthenticated() || isUsuarioAuthenticated ? ( <ListFactura />) : (<Navigate to="/login" />)}>
+              </Route>
 
                 {/* RUTAS SOLO PARA ADMIN_APP*/}
                 {/* FUNCIONES DEL ADMIN_APP EN HOTEL*/}
@@ -86,7 +94,9 @@ export const AppRouter = () => {
                 </Route>
                 <Route path="/create-tipoevento" element={isAdminAppAuthenticated() ? (<CreateTipoEvento/>) : (<Navigate to="/login" />) } >
                 </Route>
+                <Route path="/graficas"element={isAdminAppAuthenticated() ? (<SimpleBarras />) : (<Navigate to="/login" />)}></Route>
                 
+
                 {/* RUTAS SOLO PARA ADMIN_HOTEL*/}
                 <Route path="/panel-adminhotel" element={isAdminHotelAuthenticated() ? (<PanelAdminHotel/>) : (<Navigate to="/login" />) } >
                 </Route>
@@ -100,6 +110,10 @@ export const AppRouter = () => {
                 </Route>
                 {/* FUNCIONES DEL ADMIN_HOTEL EN SERVICIOS */}
                 <Route path="/create-servicio" element={isAdminHotelAuthenticated() ? (<CreateServicio/>) : (<Navigate to="/login" />) } >
+                </Route>
+                <Route path="/list-evento"element={isAdminHotelAuthenticated() ? (<ListEvento />) : (<Navigate to="/login" />)}>
+                </Route>
+                <Route path="/create-evento" element={isAdminHotelAuthenticated() ? (<CreateEvento />) : (<Navigate to="/login" />)}>
                 </Route>
 
 
@@ -120,6 +134,11 @@ export const AppRouter = () => {
                 </Route>
                 <Route path="/reservas-show" element={isUsuarioAuthenticated() ? (<ListReserva />) : (<Navigate to="/login" />)} >
                 </Route>
+                <Route path="/carrito-servicios"element={isUsuarioAuthenticated() ? <ListCarrServicios /> : <Navigate to="/login" />}>
+                </Route>
+                <Route path="/carrito" element={isUsuarioAuthenticated() ? <ListCarr /> : <Navigate to="/login" />}>
+                </Route>
+
             </Routes>
             <Footer/>
         </>

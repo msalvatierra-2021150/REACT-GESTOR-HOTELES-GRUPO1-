@@ -35,6 +35,7 @@ export const NavBar = () => {
                           <img className="dark-mode-boton" src={dark} />
                           <nav className={isOn ? "navegacion mostrar" : "navegacion"}>
                           {(localStorage.getItem('idReservacion') !== null) && (<Link to={`/reservas-show?reserva=${localStorage.getItem('idReservacion')}`}>Mis Reservaciones</Link>)}
+                          {localStorage.getItem('existeCar') === 'true' ? (<Link to="/carrito">Carrito</Link>) : []}  
                             <a href="#">Reservar</a>
                             <a href="#">Nosotros</a>
                             <a href="#">Contacto</a>

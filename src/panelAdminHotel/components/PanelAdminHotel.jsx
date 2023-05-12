@@ -7,12 +7,21 @@ export const PanelAdminHotel = () => {
     <div>PanelAdminHotel</div>
       <p>Ejecuta tal consulta o irse a crud tal</p>
       <Link className="boton boton-verde"> A la pagina de tu funcionalidad</Link>
+      
       <p> Ver Perfil, editarlo y eliminarlo</p>
       <Link to="/perfil" className="boton boton-verde">Perfil Usuario</Link>
+
       <p>CRUD Habitacion</p>
       <Link to="/habitaciones" className="boton boton-verde"> CRUD HABITACION</Link>
+
       <p>CRUD Servicios</p>
       <Link to="/servicios" className="boton boton-verde">CRUD Servicios</Link>
+
+      <p>CRUD EVENTOS</p>
+      <Link to="/list-evento" className="boton boton-verde">CRUD Evento</Link>
+
+      <p>Mostrar factura del user logeado</p>
+      <Link to="/factura" className="boton boton-verde">Factura</Link>
     </>
   )
 }
