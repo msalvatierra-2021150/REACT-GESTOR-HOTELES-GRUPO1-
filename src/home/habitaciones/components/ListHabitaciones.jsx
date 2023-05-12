@@ -16,8 +16,8 @@ export const ListHabitaciones = () => {
 
     return (
         <>
-            <GetHabitaciones 
-                descripcion="Mira las mejores habitaciones de la Ciudad:" 
+            <GetHabitaciones
+                descripcion="Mira las mejores habitaciones de la Ciudad:"
                 listHabitaciones={listHabitaciones} />
         </>
     )

@@ -11,7 +11,7 @@ export const Home = () => {
       <Link to="/perfil" className="boton boton-verde">Perfil Usuario</Link>
       <p>Buscador de hotel</p>
       <SearchHotel />
-      <Link className="boton boton-verde" to={"/habitaciones"}>Habitaciones</Link>
+      <Link to="/see-habitaciones" className="boton boton-verde">Habitaciones</Link>
       <p>Muestra las facturas del cliente</p>
       <Link to="/factura" className="boton boton-verde">Factura</Link>
       <p>Listar Servicios Cliente</p>

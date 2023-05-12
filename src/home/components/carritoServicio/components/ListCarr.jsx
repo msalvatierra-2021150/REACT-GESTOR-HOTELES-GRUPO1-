@@ -156,6 +156,7 @@ export const ListCarr = () => {
             >
               Update Cart
             </a>
+            <Link className="btn btn-success" to='/generar-factura'>Finlizar Compra</Link>
             
              <Link to="/carrito-servicios" >
                 <button type="button" className="btn btn-danger" onClick={()=>eliminarAll()} >Clear Carrito 

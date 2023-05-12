@@ -3,6 +3,23 @@ import Swal from 'sweetalert2'
 
 const token = localStorage.getItem('token');
 const URL = 'http://localhost:8080/api/reservaciones/'
+const URLCR = 'http://localhost:8080/api/cartReservaciones/'
+
+export const apiCartReserva = async (idReserva) => {
+    
+    try {
+        const response = await axios.post(`${URLCR}agregar/${idReserva}`, null,
+            { headers: { 'x-token': token } });
+        return true;
+    } catch ({ response: { data: { msg } } }) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error en la confirmacion de la reservacion',
+            text: msg
+        });
+    }
+
+}
 
 export const apiReservasById = async (idReserva) => {
 
@@ -60,12 +77,11 @@ export const apiReservaPushHab = async (habitacion_id, idReservacion) => {
         const response = await axios.post(`${URL}agregarHabitacion/${idReservacion}`, {
             habitacion_id
         }, { headers: { 'x-token': token } });
-        console.log(response);
         return true;
     } catch ({ response: { data: { msg } } }) {
         Swal.fire({
             icon: 'error',
-            title: 'Error en la creacion de la reservacion',
+            title: 'Se produjo un error en agregar la habitacion a su reserva',
             text: msg
         });
     }

@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
-import { apiReservaDelete, apiReservaDeleteHab, apiReservasClient } from "../api/apiReserva";
+import { apiCartReserva, apiReservaDelete, apiReservaDeleteHab, apiReservasClient } from "../api/apiReserva";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
@@ -12,10 +12,8 @@ export const ListReserva = () => {
 
     const viewReserva = async () => {
         const getReservaFromAPI = await apiReservasClient(idreservacion);
-        console.log(getReservaFromAPI);
         setReserva(getReservaFromAPI);
         setHabitacionesReserva(getReservaFromAPI[0].habitaciones);
-        console.log(getReservaFromAPI[0].habitaciones);
     };
 
     useEffect(() => { viewReserva(); }, []);
@@ -57,7 +55,7 @@ export const ListReserva = () => {
                 confirmButtonText: "Ok"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "/habitaciones";
+                    window.location.href = "/see-habitaciones";
                 }
             })
         } else {
@@ -65,6 +63,32 @@ export const ListReserva = () => {
                 icon: 'info',
                 title: 'Error',
                 text: 'No se ha podido eliminar',
+                showConfirmButton: true,
+                confirmButtonText: "Ok"
+            })
+        }
+    }
+    
+    const confirmarReserva = async () => {
+        let result = await apiCartReserva(idreservacion);
+        if (result) {
+            localStorage.removeItem('idReservacion');
+            Swal.fire({
+                icon: 'success',
+                title: 'Reserva Confirmada',
+                text: 'Su reserva ha sido agendada exitosamente',
+                showConfirmButton: true,
+                confirmButtonText: "Ok"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/generar-factura";
+                }
+            })
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Error',
+                text: 'No se ha podido agendar su reserva',
                 showConfirmButton: true,
                 confirmButtonText: "Ok"
             })
@@ -115,11 +139,11 @@ export const ListReserva = () => {
                 </div>
                 <div className="shopping-cart-footer">
                     <div className="column">
-                        <i className="icon-arrow-left"></i>&nbsp;<Link className="btn btn-outline-secondary" to={"/habitaciones"}>Regresar</Link>
-                        <a className="btn btn-success" href="#">Confirmar</a>
-                        <button className="btn btn-outline-danger" 
-                            onClick={() => eliminarReserva(idreservacion)}
-                        >
+                        <i className="icon-arrow-left"></i>&nbsp;<Link className="btn btn-outline-secondary" to={"/see-habitaciones"}>Regresar</Link>
+                        <button className="btn btn-success" onClick={() => confirmarReserva()}>
+                            Confirmar mi Reserva
+                        </button>
+                        <button className="btn btn-outline-danger" onClick={() => eliminarReserva()}>
                             Cancelar mi Reserva
                         </button>
                     </div>

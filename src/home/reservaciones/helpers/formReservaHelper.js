@@ -38,9 +38,9 @@ export const formReservaHelper = async (reserva, option) => {
                     confirmButtonText: 'Go  !'
                 }).then((r) => {
                     if (r.isConfirmed) {
-                        window.location.href = '/habitaciones'
+                        window.location.href = '/see-habitaciones'
                     } else {
-                        window.location.href = '/habitaciones'
+                        window.location.href = '/see-habitaciones'
                     }
                 })
             }

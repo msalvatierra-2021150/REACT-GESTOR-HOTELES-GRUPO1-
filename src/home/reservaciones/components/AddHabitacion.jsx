@@ -27,9 +27,9 @@ export const AddHabitacion = () => {
                 confirmButtonText: "Ok"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "/habitaciones";
+                    window.location.href = "/see-habitaciones";
                 } else { 
-                    window.location.href = "/habitaciones"; 
+                    window.location.href = "/see-habitaciones";
                 }
             })
         } else {
