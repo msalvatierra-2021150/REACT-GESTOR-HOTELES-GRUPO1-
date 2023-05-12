@@ -67,10 +67,17 @@ export const ListHotel = () => {
       })
     }
   }
+  const enviar = (h)=>{
+
+    setHotel(h);
+   
+  }
   return (
     <>
       <main className="container seccion">
         <h1>Administrador de Hoteles</h1>
+        <p>Graficas del los hoteles con mas reservaciones</p>
+      <Link to="/graficas" className="boton boton-verde">Graficas</Link>
         <Link to="/create-hotel" className="boton boton-verde">
           Nuevo Hotel
         </Link>
@@ -88,6 +95,7 @@ export const ListHotel = () => {
               <th className="text-center">Administrador</th>
               <th className="text-center">Eventos</th>
               <th className="text-center">Opciones</th>
+              <th className="text-center">Graficas</th>
               <th></th>
             </tr>
           </thead>
@@ -95,7 +103,6 @@ export const ListHotel = () => {
             {listHotels.map((h) => {
 
               return (
-
                 <tr key={h._id}>
 
                   <td className="text-center">{h.nombre}</td>
@@ -128,6 +135,11 @@ export const ListHotel = () => {
                       onClick={() => eliminarHotel(h._id)}>
                       Eliminar
                     </button>
+                  </td>
+                  <td>
+                    <Link to={`/grafica-habitaciones?idHotel=${h._id}`} className="btn btn-success ms-2 w-100" onClick={()=>setHotel(h)}>
+                        Grafica
+                    </Link>
                   </td>
                 </tr>
 

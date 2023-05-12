@@ -11,6 +11,19 @@ const URLD = "http://localhost:8080/api/departamentos/";
 const URLE = "http://localhost:8080/api/evento/";
 
 // Mostrar informacion
+export const apiHotelHabitaciones = async (id) => {
+    try {
+
+        const { data: { arregloHabitaciones } } = await axios.get(`${URL}habitacionesH/${id}`,
+        { headers: { "x-token": token } });
+       console.log(arregloHabitaciones);
+        return arregloHabitaciones;
+
+    } catch ({ response: { data: { message } } }) {
+        return data.message;
+    }
+
+}
 export const apiHotel = async () => {
     try {
 
@@ -49,6 +62,7 @@ export const apiHotel = async () => {
     }
 
 }
+
 
 export const apiDepartamento = async () => {
     try {
