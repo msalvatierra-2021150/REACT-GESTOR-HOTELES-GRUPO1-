@@ -2,16 +2,16 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const token = localStorage.getItem('token');
-const URL = "http://localhost:8080/api/servicios/";
+const URL = "http://localhost:8080/api/tipoevento/";
 
 
-export const apiServicios = async () => {
+export const apiTipoEvento = async () => {
     try {
 
-        const { data: { listaServicios } } = await axios.get(`${URL}mostrar`,
+        const { data: { listaTipoEventos } } = await axios.get(`${URL}mostrar`,
         { headers: { "x-token": token } });
-        console.log(listaServicios)
-        return listaServicios;
+       console.log(listaTipoEventos)
+        return listaTipoEventos;
 
     } catch ({ response: { data: { msg } } }) {
         return data.message;
@@ -22,14 +22,13 @@ export const apiServicios = async () => {
 
 
 //API ruta para crear un usuarioc
-export const apiServiciosCreate = async (nombreServicio, descripcion, precio) => {
-    console.log(nombreServicio, descripcion, precio)
+export const apiTipoEventoCreate = async (nombre, precio) => {
+    
     try {
        
         const userSave = await axios.post(
             `${URL}agregar`, {
-                nombreServicio: nombreServicio,
-                descripcion: descripcion,
+                nombre: nombre,
                 precio: precio,
         }, { headers: { "x-token": token } });
 
@@ -65,17 +64,15 @@ export const apiServiciosCreate = async (nombreServicio, descripcion, precio) =>
     }
 
 }
-export const apiServiciosUpdate = async (id, nombreServicio, descripcion, precio) => {
+export const apiTipoEventoUpdate = async (id, nombre, precio) => {
     console.log(id);
-    console.log(nombreServicio);
-    console.log(descripcion);
+    console.log(nombre);
     console.log(precio);
     try {
         console.log(`${URL}editar/${id}`);
         const userSave = await axios.put(`${URL}editar/${id}`, {
             id: id,
-            nombreServicio: nombreServicio,
-            descripcion: descripcion,
+            nombre: nombre,
             precio: precio,
            
         }, { headers: { "x-token": token } });
@@ -113,9 +110,9 @@ export const apiServiciosUpdate = async (id, nombreServicio, descripcion, precio
 
 }
 
-export const apiServiciosDelete = async( id ) => {
+export const apiTipoEventoDelete = async( id ) => {
     try {
-        const {} = await axios.delete(`${URL}eliminar/${id}`,
+        const {} = await axios.delete(`${URL}/eliminar/${id}`,
          { headers: { "x-token": token } });
          return true;
     } catch ({ response: { data: { message } } }) {

@@ -11,6 +11,8 @@ export const PanelAdminHotel = () => {
       <Link to="/perfil" className="boton boton-verde">Perfil Usuario</Link>
       <p>CRUD Habitacion</p>
       <Link to="/habitaciones" className="boton boton-verde"> CRUD HABITACION</Link>
+      <p>CRUD Servicios</p>
+      <Link to="/servicios" className="boton boton-verde">CRUD Servicios</Link>
     </>
   )
 }

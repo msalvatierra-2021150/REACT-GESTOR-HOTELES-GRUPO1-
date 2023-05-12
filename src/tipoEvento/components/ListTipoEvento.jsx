@@ -1,37 +1,37 @@
 import { useEffect, useState } from "react";
-import { apiServicios } from "../api/apiServicios";
+import { apiTipoEvento } from "../api/apiTipoEvento";
 import { Link } from "react-router-dom";
-import { UpdateServicio } from "./UpdateServicio";
-import { Servicios } from "../models/servicios.models";
-import { apiServiciosDelete } from "../api/apiServicios"; 
+import { UpdateTipoEvento } from "./UpdateTipoEvento";
+import { TipoEvento } from "../models/tipoEvento.models";
+import { apiTipoEventoDelete } from "../api/apiTipoEvento"; 
 import { Swal } from "sweetalert2";
 
-export const ListServicios = () => {
+export const ListTipoEvento = () => {
   
-  const [servicios, setServicios] = useState(Servicios);
+  const [tipoEvento, setTipoEvento] = useState(TipoEvento);
   
   const [showModal, setShowModal] = useState(false);
   const [ids, setId] = useState(0)
   
   //Estado de usuarios en la lista de forma independiente
-  const [listServices, setListServices] = useState([]);
+  const [listTE, setListTE] = useState([]);
 
-  const viewServiciosList = async () => {
-    const getListServicesFromAPI = await apiServicios();
+  const viewTipoEventoList = async () => {
+    const getListTEFromAPI = await apiTipoEvento();
     
-    setListServices(getListServicesFromAPI);
+    setListTE(getListTEFromAPI);
   };
 
   //UseEffect crea efectos secundarios, en este caso al momento de renderizar la tabla
   useEffect(() => {
-    viewServiciosList();
+    viewTipoEventoList();
   }, [showModal]);
 
   //modal
   const handleOpenModal = (h) => {
     console.log(h)
     setShowModal(true);
-    setServicios(h);
+    setTipoEvento(h);
 
   };
 
@@ -39,10 +39,10 @@ export const ListServicios = () => {
     setShowModal(false);
   };
 
-    const eliminarServicios = async(id) => {
-    let result = await apiServiciosDelete(id);
+    const eliminarTipoEvento = async(id) => {
+    let result = await apiTipoEventoDelete(id);
     if (result) {
-      setListServices(listServices.filter((h) => h._id !== id));
+      setListTE(listTE.filter((h) => h._id !== id));
       Swal.fire({
         icon: 'success',
         title: 'Hotel Eliminado',
@@ -51,7 +51,7 @@ export const ListServicios = () => {
         confirmButtonText: "Ok"
     })
     } else {
-    Swal.fire({
+      Swal.fire({
         icon: 'info',
         title: 'Error',
         text: 'No se ha podido eliminar',
@@ -63,30 +63,28 @@ export const ListServicios = () => {
   return (
     <>
       <main className="container seccion">
-        <h1>Administrador de Servicios</h1>
-        <Link to="/create-servicio" className="boton boton-verde">
-          Nuevo Servicio
+        <h1>Administrador de Tipo de Eventos</h1>
+        <Link to="/create-tipoevento" className="boton boton-verde">
+          Nuevo Tipo de Evento
         </Link>
         <table className="propiedades">
           <thead>
             <tr>
               <th className="text-center">ID</th>
               <th className="text-center">Nombre</th>
-              <th className="text-center">Descripcion</th>
               <th className="text-center">Precio</th>
               <th className="text-center">Opciones</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {listServices.map((h) => {
+            {listTE.map((h) => {
               
               return (
                 
                 <tr key={h._id}>
                   <th className="text-center">{h._id} </th>
-                  <td className="text-center">{h.nombreServicio}</td>
-                  <td className="text-center">{h.descripcion}</td>
+                  <td className="text-center">{h.nombre}</td>
                   <td className="text-center">{h.precio}</td>
                   
                   <td>
@@ -97,7 +95,7 @@ export const ListServicios = () => {
                     Editar
                     </button>
                     <button className="btn btn-danger ms-2 w-100" 
-                      onClick={() =>eliminarServicios(h._id)}>
+                      onClick={() =>eliminarTipoEvento(h._id)}>
                     Eliminar
                     </button>
                   </td>
@@ -112,11 +110,11 @@ export const ListServicios = () => {
             }
           </tbody>
         </table>
-        <UpdateServicio
-          serviciosEdit={servicios}
+        <UpdateTipoEvento
+          tipoEventoEdit={tipoEvento}
           isOpen={showModal}
           onClose={() => handleCloseModal()}
-        ></UpdateServicio>
+        ></UpdateTipoEvento>
       </main>
     </>
   );

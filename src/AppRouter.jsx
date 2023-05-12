@@ -5,7 +5,6 @@ import { ListHotel } from "./hotel/components/ListHotel"
 
 import { CreateHotel } from "./hotel/components/CreateHotel"
 import { isAdminAppAuthenticated, isAdminHotelAuthenticated, isUserLogged, isUsuarioAuthenticated } from "./login/helpers/isUserAuthenticated"
-import { ListServicios } from "./servicios/components/ListServicios"
 import { Home } from "./home/components/Home"
 import { PanelAdminApp } from "./panelAdminApp/components/PanelAdminApp"
 import { PanelAdminHotel } from "./panelAdminHotel/components/PanelAdminHotel"
@@ -32,8 +31,14 @@ import { CreateDepartamentos } from "./panelAdminApp/components/departamentos/co
 //PARTE REACT SAMUEL
 import { ListHabitacion } from "./habitacion/components/ListHabitacion"
 import { CreateHabitacion } from "./habitacion/components/CreateHabitacion"
-import { CreateFactura } from "./hotel/components/CreateFactura"
-import { ListFactura } from "./hotel/components/ListFactura"
+//import { CreateFactura } from "./hotel/components/CreateFactura"
+//import { ListFactura } from "./hotel/components/ListFactura"
+
+//PARTE REACT CEBALLOS
+import { ListServicios } from "./servicios/components/ListServicios"
+import { ListTipoEvento } from "./tipoEvento/components/ListTipoEvento"
+import { CreateServicio } from "./servicios/components/CreateServicio"
+import { CreateTipoEvento } from "./tipoEvento/components/CreateTipoEvento"
 
 
 export const AppRouter = () => {
@@ -78,18 +83,27 @@ export const AppRouter = () => {
                 {/* Chequea si es ADMIN_APP para redirigirlo al panel de control Usuarios*/}
                 <Route path="/usuarios" element={isAdminAppAuthenticated() ? (<ListUsuarios />) : (<Navigate to="/login" />) } >
                 </Route>
+                {/* FUNCIONES DEL ADMIN_APP EN TIPO DE EVENTO */}
+                <Route path="/tipoevento" element={isAdminAppAuthenticated() ? (<ListTipoEvento/>) : (<Navigate to="/login" />) } >
+                </Route>
+                <Route path="/create-tipoevento" element={isAdminAppAuthenticated() ? (<CreateTipoEvento/>) : (<Navigate to="/login" />) } >
+                </Route>
                 
                 {/* RUTAS SOLO PARA ADMIN_HOTEL*/}
                 <Route path="/panel-adminhotel" element={isAdminHotelAuthenticated() ? (<PanelAdminHotel/>) : (<Navigate to="/login" />) } >
                 </Route>
-                {/* FUNCIONES DEL ADMIN_HOTEL EN SERVICIOS */}
-                <Route path="/servicios" element={isAdminHotelAuthenticated() ? (<ListServicios/>) : (<Navigate to="/login" />) } >
-                </Route>
+{               /* FUNCIONES DEL ADMIN_HOTEL EN HABITACIONES */}
                 <Route path="/habitaciones" element={isAdminHotelAuthenticated() ? (<ListHabitacion />) : (<Navigate to="/login" />)} >
                 </Route>
-
                 <Route path="/create-habitacion" element={isAdminHotelAuthenticated() ? (<CreateHabitacion />) : (<Navigate to="/login" />)} >
                 </Route>
+                 {/* FUNCIONES DEL ADMIN_HOTEL EN SERVICIOS */}
+                 <Route path="/servicios" element={isAdminHotelAuthenticated() ? (<ListServicios/>) : (<Navigate to="/login" />) } >
+                </Route>
+                {/* FUNCIONES DEL ADMIN_HOTEL EN SERVICIOS */}
+                <Route path="/create-servicio" element={isAdminHotelAuthenticated() ? (<CreateServicio/>) : (<Navigate to="/login" />) } >
+                </Route>
+
 
                 {/* RUTAS SOLO PARA USUARIOS*/}
                 {/* FUNCIONES DEL USUARIO AL LOGEARSE*/}

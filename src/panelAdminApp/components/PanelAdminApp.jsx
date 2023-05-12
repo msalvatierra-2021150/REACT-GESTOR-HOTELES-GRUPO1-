@@ -18,6 +18,9 @@ export const PanelAdminApp = () => {
 
       <p>Listar Usuarios</p>
       <Link to="/usuarios" className="boton boton-verde">Listar Usuarios</Link>
+
+      <p>CRUD Tipo de Evento</p>
+      <Link to="/tipoevento" className="boton boton-verde">CRUD Tipo Evento</Link>
  </>   
   )
 }

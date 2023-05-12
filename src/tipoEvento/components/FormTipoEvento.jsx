@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form";
-import { formOptions, formUserHelper } from "../helpers/fromServicio";
+import { formOptions, formUserHelper } from "../helpers/fromTipoEvento";
 import { useEffect } from "react";
 
 //HotelProp es mi modelo
-export const FormServicio = ({ serviciosProp, titleButton, option }) => {
-    const [servicios, setServicios] = useState(serviciosProp);
+export const FormTipoEvento = ({ tipoEventoProp, titleButton, option }) => {
+    const [tipoEvento, setTipoEvento] = useState(tipoEventoProp);
 
     
 
@@ -18,15 +18,15 @@ export const FormServicio = ({ serviciosProp, titleButton, option }) => {
 
 
     useEffect(() => {
-        setServicios({ ...servicios });
+        setTipoEvento({ ...tipoEvento });
     }, [])
 
     const crud = async () => {
 
-        await formUserHelper(servicios, option);
+        await formUserHelper(tipoEvento, option);
 
     }
-    console.log(servicios);
+    console.log(tipoEvento);
     return (
         <>
             <main >
@@ -34,32 +34,18 @@ export const FormServicio = ({ serviciosProp, titleButton, option }) => {
                 <form className="formulario" onSubmit={handleSubmit(crud)}>
                     <fieldset className="mt-5">
                         <legend>Informacion General</legend>
-                        <label >Nombre del Servicio</label>
+                        <label >Nombre Tipo de Evento</label>
                         <input
-                            {...register("nombreServicio")}
+                            {...register("nombre")}
                             type="text"
                             className="form-control"
-                            value={servicios.nombreServicio}
+                            value={tipoEvento.nombre}
                             onChange={({ target: { value } }) => {
-                                setServicios(() => ({ ...servicios,nombreServicio: value }));
+                                setTipoEvento(() => ({ ...tipoEvento,nombre: value }));
                             }
                             }
                         />
-                        {errors.nombreServicio && (<span>{errors.nombreServicio.message}</span>)}
-
-
-                        <label htmlFor="descripcion">Descripcion</label>
-                        <input
-                            {...register("descripcion")}
-                            type="text"
-                            className="form-control"
-                            value={servicios.descripcion}
-                            onChange={({ target: { value } }) => {
-                                setServicios(() => ({ ...servicios, descripcion: value }));
-                            }
-                            }
-                        />
-                        {errors.descripcion && (<span>{errors.descripcion.message}</span>)}
+                        {errors.nombre && (<span>{errors.nombre.message}</span>)}
                         
 
                         <label htmlFor="precio">Precio</label>
@@ -68,9 +54,9 @@ export const FormServicio = ({ serviciosProp, titleButton, option }) => {
                             {...register("precio")}
                             type="text"
                             className="form-control"
-                            value={servicios.precio}
+                            value={tipoEvento.precio}
                             onChange={({ target: { value } }) => {
-                                setServicios(() => ({ ...servicios, precio: value }));
+                                setTipoEvento(() => ({ ...tipoEvento, precio: value }));
                             }}
                         />
                         {errors.precio && (<span>{errors.precio.message}</span>)}
