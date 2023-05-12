@@ -54,8 +54,6 @@ export const AppRouter = () => {
                 </Route>
                 <Route path="/signin" element={!isUserLogged() ? <CreateUsuario/> : <Navigate to="/login" />}>
                 </Route>
-                <Route path="/login" element={!isUserLogged() ? <Login /> : <Navigate to="/home" />}>
-                </Route>
 
 
                 {/* RUTAS SOLO PARA ADMIN_APP*/}
