@@ -29,6 +29,13 @@ import { ListDepartamentos } from "./panelAdminApp/components/departamentos/comp
 import { ListUsuarios } from "./panelAdminApp/components/usuarios/components/ListUsuarios"
 import { CreateDepartamentos } from "./panelAdminApp/components/departamentos/components/CreateDepartamentos"
 
+//PARTE REACT SAMUEL
+import { ListHabitacion } from "./habitacion/components/ListHabitacion"
+import { CreateHabitacion } from "./habitacion/components/CreateHabitacion"
+import { CreateFactura } from "./hotel/components/CreateFactura"
+import { ListFactura } from "./hotel/components/ListFactura"
+
+
 export const AppRouter = () => {
     return (
         <>
@@ -75,10 +82,13 @@ export const AppRouter = () => {
                 {/* RUTAS SOLO PARA ADMIN_HOTEL*/}
                 <Route path="/panel-adminhotel" element={isAdminHotelAuthenticated() ? (<PanelAdminHotel/>) : (<Navigate to="/login" />) } >
                 </Route>
-                
-                 {/* RUTAS SOLO PARA ADMIN_HOTEL*/}
                 {/* FUNCIONES DEL ADMIN_HOTEL EN SERVICIOS */}
                 <Route path="/servicios" element={isAdminHotelAuthenticated() ? (<ListServicios/>) : (<Navigate to="/login" />) } >
+                </Route>
+                <Route path="/habitaciones" element={isAdminHotelAuthenticated() ? (<ListHabitacion />) : (<Navigate to="/login" />)} >
+                </Route>
+
+                <Route path="/create-habitacion" element={isAdminHotelAuthenticated() ? (<CreateHabitacion />) : (<Navigate to="/login" />)} >
                 </Route>
 
                 {/* RUTAS SOLO PARA USUARIOS*/}
