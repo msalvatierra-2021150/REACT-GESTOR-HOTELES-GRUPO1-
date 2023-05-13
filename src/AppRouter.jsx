@@ -12,9 +12,11 @@ import { PanelAdminHotel } from "./panelAdminHotel/components/PanelAdminHotel"
 import { UserListHotel } from "./home/components/UserListHotel"
 import { UserListHabita } from "./home/components/UserListHabita"
 import { UserEventList } from "./home/components/UserEventList"
-import { ListHabita } from "./hotel/components/ListHabita"
-import { ListReservas } from "./hotel/components/ListReservas"
-import { ReservaUser } from "./hotel/components/ReservaUser"
+
+import { ListHabita } from "./panelAdminHotel/hotel/components/ListHabita"
+import { ListReservas } from "./panelAdminHotel/hotel/components/ListReservas"
+import { ReservaUser } from "./panelAdminHotel/hotel/components/ReservaUser"
+import { ListHotelAdmin } from "./panelAdminHotel/hotel/components/ListHotelAdmin"
 
 export const AppRouter = () => {
     return (
@@ -41,6 +43,8 @@ export const AppRouter = () => {
                 <Route path="/panel-adminhotel" element={isAdminHotelAuthenticated() ? (<PanelAdminHotel/>) : (<Navigate to="/login" />) } >
                 </Route>
                 <Route path="/lista-hoteles" element={isAdminHotelAuthenticated() ? (<ListHotel/>) : (<Navigate to="/login" />) } >
+                </Route>
+                <Route path="/lista-hoteles-admin" element={isAdminHotelAuthenticated() ? (<ListHotelAdmin/>) : (<Navigate to="/login" />) } >
                 </Route>
                 <Route path="/lista-habitaciones" element={isAdminHotelAuthenticated() ? (<ListHabita/>) : (<Navigate to="/login" />) } >
                 </Route>

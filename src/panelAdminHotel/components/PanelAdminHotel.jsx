@@ -9,6 +9,8 @@ export const PanelAdminHotel = () => {
       
       <Link className="boton boton-verde mx-2" to="/lista-hoteles">Lista de hoteles</Link>
 
+      <Link className="boton boton-verde mx-2" to="/lista-hoteles-admin">Lista de hoteles que administro</Link>
+
     </>
   )
 }

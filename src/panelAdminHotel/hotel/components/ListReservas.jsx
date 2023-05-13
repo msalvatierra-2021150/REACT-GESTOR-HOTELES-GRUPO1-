@@ -11,7 +11,6 @@ export const ListReservas = () => {
     const idHotel = localStorage.getItem('id');
 
     const [listReserv, setListReserv] = useState([]);
-    const [habiDisponi, setHabiDisponi] = useState(0);
 
     const viewReservList = async () => {
         const result = await apiReservasHotel(idHotel);
@@ -26,7 +25,7 @@ export const ListReservas = () => {
         <>
             <main className="contenedor seccion">
                 <h1>Administrador de Hoteles</h1>
-                <Link to="/lista-hoteles"
+                <Link to="/lista-hoteles-admin"
                     className="boton boton-verde mt-3"
                 >
                     Volver

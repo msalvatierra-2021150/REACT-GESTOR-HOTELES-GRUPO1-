@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-//import { buscarHotel } from "../api/habitaByHotel";
 import { apiBuscarUsuario, apiUsuarioEnHotel } from "../api/apiHotel";
 import { Link } from "react-router-dom";
 

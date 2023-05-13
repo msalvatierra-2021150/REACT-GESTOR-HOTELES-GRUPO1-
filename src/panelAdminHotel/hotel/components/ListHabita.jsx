@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from "react-router-dom"
-import { habitByHotel } from '../../home/api/habitaByHotel';
+import { habitByHotel } from '../../../home/api/habitaByHotel';
 import { apiHabitacionesActivas } from '../api/apiHotel';
 
 export const ListHabita = () => {
@@ -32,7 +32,7 @@ export const ListHabita = () => {
         <>
             <main className="contenedor seccion">
                 <h1>Administrador de Hoteles</h1>
-                <Link to="/lista-hoteles"
+                <Link to="/lista-hoteles-admin"
                     className="boton boton-verde mt-3"
                 >
                     Volver
@@ -52,17 +52,17 @@ export const ListHabita = () => {
                                     />
                                     <div className="contenido-anuncio">
                                         {/* <h3>Habitación</h3> */}
-                                        <p>{u.descripcion}</p>
+                                        <p>
+                                            <b>Id de la habitación:</b>
+                                            <br />
+                                            {u._id}
+                                        </p>
+                                        <hr />
+                                        <b>Precio: </b>
                                         <p className="precio">Q.{u.precio}</p>
-                                        <ul className="iconos-caracteristicas">
-                                            <li>
-                                                {/* icono de cama */}
-                                                <p>Capacidad: {u.capacidad}</p>
-                                            </li>
-                                        </ul>
-                                        <a href="#" className="boton boton-amarillo-block"
+                                        {/* <a href="#" className="boton boton-amarillo-block"
                                         >Reservar ahora</a
-                                        >
+                                        > */}
                                     </div>
                                 </div>
                             )
