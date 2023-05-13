@@ -48,6 +48,8 @@ import { CreateEvento } from "./panelAdminHotel/components/Evento/components/Cre
 import { ListCarrServicios } from "./home/components/carritoServicio/components/ListCarrServicios";
 import { ListCarr } from "./home/components/carritoServicio/components/ListCarr";
 import { SimpleBarras } from "./panelAdminApp/components/graficas/components/SimpleBarras";
+import { MostrarGrafica } from "./hotel/components/MostrarGrafica"
+
 
 export const AppRouter = () => {
     return (
@@ -96,7 +98,9 @@ export const AppRouter = () => {
                 <Route path="/create-tipoevento" element={isAdminAppAuthenticated() ? (<CreateTipoEvento />) : (<Navigate to="/login" />)} >
                 </Route>
                 <Route path="/graficas" element={isAdminAppAuthenticated() ? (<SimpleBarras />) : (<Navigate to="/login" />)}></Route>
-
+                {/*graficas */}
+                <Route path="/grafica-habitaciones" element={isAdminAppAuthenticated() ? (<MostrarGrafica />) : (<Navigate to="/login" />) } >
+                </Route>
 
                 {/* RUTAS SOLO PARA ADMIN_HOTEL*/}
                 <Route path="/panel-adminhotel" element={isAdminHotelAuthenticated() ? (<PanelAdminHotel />) : (<Navigate to="/login" />)} >

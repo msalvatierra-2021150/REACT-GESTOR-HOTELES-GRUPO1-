@@ -10,4 +10,5 @@ export const Hotel = {
   usuario: '',
   eventos: ''
 }
+console.log(Hotel);
 
