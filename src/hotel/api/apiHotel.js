@@ -183,10 +183,11 @@ export const apiAddEvent = async (hotelAddEventId, evento) => {
 
 }
 
-//API ruta para crear un usuarioc
+
 export const apiHotelCreate = async (nombre, direccion, departamento, nit, rating, numero_reservaciones, img, descripcion, usuario) => {
 
     try {
+
 
         const userSave = await axios.post(
             `${URL}agregar`, {
@@ -200,6 +201,7 @@ export const apiHotelCreate = async (nombre, direccion, departamento, nit, ratin
             descripcion: descripcion,
             usuario: usuario
         }, { headers: { "x-token": token } });
+
 
 
         return true;
@@ -248,8 +250,10 @@ export const apiHotelUpdate = async (id, nombre, direccion, departamento, nit, r
             descripcion: descripcion,
             usuario: usuario
 
+
         }, { headers: { "x-token": token } });
         console.log(userSave);
+
 
         return true;
 

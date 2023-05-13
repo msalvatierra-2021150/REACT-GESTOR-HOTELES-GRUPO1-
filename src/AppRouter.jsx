@@ -32,8 +32,6 @@ import { CreateDepartamentos } from "./panelAdminApp/components/departamentos/co
 //PARTE REACT SAMUEL
 import { ListHabitacion } from "./habitacion/components/ListHabitacion"
 import { CreateHabitacion } from "./habitacion/components/CreateHabitacion"
-//import { CreateFactura } from "./hotel/components/CreateFactura"
-//import { ListFactura } from "./hotel/components/ListFactura"
 
 //PARTE REACT CEBALLOS
 import { ListServicios } from "./servicios/components/ListServicios"
@@ -50,6 +48,15 @@ import { ListCarr } from "./home/components/carritoServicio/components/ListCarr"
 import { SimpleBarras } from "./panelAdminApp/components/graficas/components/SimpleBarras";
 import { MostrarGrafica } from "./hotel/components/MostrarGrafica"
 
+//PARTE REACT LUIS
+import { UserListHotel } from "./home/components/UserListHotel"
+import { UserListHabita } from "./home/components/UserListHabita"
+import { UserEventList } from "./home/components/UserEventList"
+
+import { ListHabita } from "./panelAdminHotel/hotel/components/ListHabita"
+import { ListReservas } from "./panelAdminHotel/hotel/components/ListReservas"
+import { ReservaUser } from "./panelAdminHotel/hotel/components/ReservaUser"
+import { ListHotelAdmin } from "./panelAdminHotel/hotel/components/ListHotelAdmin"
 
 export const AppRouter = () => {
     return (
@@ -120,6 +127,15 @@ export const AppRouter = () => {
                 </Route>
                 <Route path="/create-evento" element={isAdminHotelAuthenticated() ? (<CreateEvento />) : (<Navigate to="/login" />)}>
                 </Route>
+                {/* FUNCIONES DEL HOTEL PARA ADMIN_HOTEL*/}
+                <Route path="/lista-hoteles-admin" element={isAdminHotelAuthenticated() ? (<ListHotelAdmin/>) : (<Navigate to="/login" />) } >
+                </Route>
+                <Route path="/lista-habitaciones" element={isAdminHotelAuthenticated() ? (<ListHabita/>) : (<Navigate to="/login" />) } >
+                </Route>
+                <Route path="/lista-reservas" element={isAdminHotelAuthenticated() ? (<ListReservas/>) : (<Navigate to="/login" />) } >
+                </Route>
+                <Route path="/usuario-reservas" element={isAdminHotelAuthenticated() ? (<ReservaUser/>) : (<Navigate to="/login" />) } >
+                </Route>
 
 
                 {/* RUTAS SOLO PARA USUARIOS*/}
@@ -144,6 +160,13 @@ export const AppRouter = () => {
                 <Route path="/carrito" element={isUsuarioAuthenticated() ? <ListCarr /> : <Navigate to="/login" />}>
                 </Route>
                 <Route path="/generar-factura" element={isUsuarioAuthenticated() ? <CreateFactura /> : <Navigate to="/login" />}>
+                </Route>
+                {/*Funcionalidades consultas*/}
+                <Route path="/hoteles-lista" element={isUsuarioAuthenticated() ? (<UserListHotel/>) : (<Navigate to="/login" />) } >
+                </Route>
+                <Route path="/habitaciones-lista" element={isUsuarioAuthenticated() ? (<UserListHabita/>) : (<Navigate to="/login" />) } >
+                </Route>
+                <Route path="/eventos-lista" element={isUsuarioAuthenticated() ? (<UserEventList/>) : (<Navigate to="/login" />) } >
                 </Route>
             </Routes>
             <Footer />

@@ -20,6 +20,9 @@ export const PanelAdminHotel = () => {
 
       <p>Mostrar factura del user logeado</p>
       <Link to="/factura" className="boton boton-verde">Factura</Link>
+
+      <p>Funcionalidades de los hoteles del Admin Logeado</p>
+      <Link className="boton boton-verde mx-2" to="/lista-hoteles-admin">Lista de hoteles que administro</Link>
     </>
   )
 }
