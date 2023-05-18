@@ -94,7 +94,7 @@ export const apiReservasHotel = async (id) => {
     try {
         const { data: { reservas } } = await axios.get(`${reservasHotelURL}${id}`,
             { headers: { "x-token": token } });
-
+        
         return reservas;
 
     } catch ({ response: { data: { message } } }) {

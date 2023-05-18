@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { eventByHotel } from "../api/habitaByHotel";
 import { Link, useLocation } from "react-router-dom";
+import { NavbarInicial } from "../../login/components/NavbarInicial";
 
 export const UserEventList = () => {
 
@@ -23,7 +24,8 @@ export const UserEventList = () => {
     }, []);
 
     return (
-
+        <>
+      {localStorage.getItem("token") ?  [] : [<NavbarInicial/>]}
         <main className="contenedor seccion">
 
             <Link to="/hoteles-lista"
@@ -83,5 +85,6 @@ export const UserEventList = () => {
             </div>
 
         </main>
+        </>
     )
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { apiUsuariosAll } from "../api/apiUsuarios";
+import { Link } from "react-router-dom";
 
 export const ListUsuarios = () => {
   //Estado de usuarios en la lista de forma independiente
@@ -16,6 +17,7 @@ export const ListUsuarios = () => {
   return (
     <>
       <main className="container seccion">
+      <Link className="boton boton-verde" to={"/panel-adminapp"}>Regresar</Link>
         <h1>Administrador de Hoteles</h1>
         <table className="propiedades">
           <thead>

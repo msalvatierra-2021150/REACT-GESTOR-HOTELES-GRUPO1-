@@ -16,6 +16,8 @@ export const CreateFactura = () => {
   const createFactura = async (NITReceptor) => {
     const response = await apiFacturaCreate(NITReceptor);
     if (response) {
+      localStorage.removeItem('idReservacion');
+      localStorage.removeItem('existeCar');
       Swal.fire({
         icon: 'success',
         title: 'Factura creada',

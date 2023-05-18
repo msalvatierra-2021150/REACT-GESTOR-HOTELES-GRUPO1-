@@ -77,6 +77,7 @@ export const ListHotel = () => {
       <main className="container seccion">
         <h1>Administrador de Hoteles</h1>
         <p>Graficas del los hoteles con mas reservaciones</p>
+        <Link to="/panel-adminapp" className="boton boton-verde">Volver</Link>
       <Link to="/graficas" className="boton boton-verde">Graficas</Link>
         <Link to="/create-hotel" className="boton boton-verde">
           Nuevo Hotel
@@ -106,13 +107,23 @@ export const ListHotel = () => {
                 <tr key={h._id}>
 
                   <td className="text-center">{h.nombre}</td>
-                  <td className="text-center">{h.direccion}</td>
+                  <td className="text-center">
+                          <div className="mb-3">
+                            <textarea className="form-control" rows="4"
+                              disabled={true} defaultValue={h.direccion}></textarea>
+                          </div>
+                        </td>
                   <td className="text-center">{h.departamento.nombre}</td>
                   <td className="text-center">{h.nit}</td>
                   <td className="text-center">{h.rating}</td>
                   <td className="text-center">{h.numero_reservaciones}</td>
-                  <td className="text-center">{h.img}</td>
-                  <td className="text-center">{h.descripcion}</td>
+                  <td className="text-center"> <img src={h.img}  className="img-fluid" /></td>
+                  <td className="text-center">
+                          <div className="mb-3">
+                            <textarea className="form-control" rows="4"
+                              disabled={true} defaultValue={h.descripcion}></textarea>
+                          </div>
+                        </td>
                   <td className="text-center">{h.usuario.nombre}</td>
                   <td className="text-center">
                     <button className="btn btn-success ms-2 w-100"

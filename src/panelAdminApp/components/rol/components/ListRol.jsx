@@ -58,6 +58,7 @@ export const ListRol = () => {
     <>
       <main className="container seccion">
         <h1>Administrador de Rol</h1>
+        <Link className="boton boton-verde" to={"/panel-adminapp"}>Regresar</Link>
         <Link to="/create-rol" className="boton boton-verde">
           Nuevo Rol
         </Link>

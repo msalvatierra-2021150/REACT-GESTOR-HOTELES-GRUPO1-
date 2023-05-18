@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import icono_dormitorio from '../../../img/icono_dormitorio.svg';
-import encuentra from '../../../img/encuentra.jpg';
 
 const idReserva = localStorage.getItem('idReservacion');
 export const GetHabitaciones = ({descripcion, listHabitaciones}) => {
@@ -13,12 +12,11 @@ export const GetHabitaciones = ({descripcion, listHabitaciones}) => {
                     listHabitaciones.map((h) => {
                         return (
                             <div className="anuncio" key={h._id}>
-                                <img loading="lazy" src={encuentra} alt="anuncio" />
+                                <img loading="lazy" src={h.img} alt="anuncio" />
                                 <div className="contenido-anuncio">
-                                    <h3>Habitación De lujo, 1 King</h3>
-                                    <p>
+                                    <h1>
                                         {h.descripcion}
-                                    </p>
+                                    </h1>
                                     <p className="precio">Precio: {h.precio}</p>
                                     <ul className="iconos-caracteristicas">
                                         <li>

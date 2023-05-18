@@ -30,7 +30,7 @@ export const FormTipoEvento = ({ tipoEventoProp, titleButton, option }) => {
     return (
         <>
             <main >
-            <Link className="boton boton-verde" to="/servicios">Volver</Link>
+            <Link className="boton boton-verde" to="/tipoevento">Volver</Link>
                 <form className="formulario" onSubmit={handleSubmit(crud)}>
                     <fieldset className="mt-5">
                         <legend>Informacion General</legend>
@@ -63,7 +63,7 @@ export const FormTipoEvento = ({ tipoEventoProp, titleButton, option }) => {
 
 
                     </fieldset>
-                    <button type="submit" className="btn btn-success" onClick={crud}>{titleButton}</button>
+                    <button type="submit" className="btn btn-success" >{titleButton}</button>
                 </form>
             </main>
         </>

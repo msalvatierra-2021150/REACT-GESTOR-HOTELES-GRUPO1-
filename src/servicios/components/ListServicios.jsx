@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UpdateServicio } from "./UpdateServicio";
 import { Servicios } from "../models/servicios.models";
 import { apiServiciosDelete } from "../api/apiServicios"; 
-import { Swal } from "sweetalert2";
+import  Swal  from "sweetalert2";
 
 export const ListServicios = () => {
   
@@ -64,6 +64,7 @@ export const ListServicios = () => {
     <>
       <main className="container seccion">
         <h1>Administrador de Servicios</h1>
+        <Link className="boton boton-verde" to={"/panel-adminhotel"}>Regresar</Link>
         <Link to="/create-servicio" className="boton boton-verde">
           Nuevo Servicio
         </Link>

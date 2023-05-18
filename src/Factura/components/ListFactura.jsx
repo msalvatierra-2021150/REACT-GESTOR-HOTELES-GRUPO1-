@@ -6,6 +6,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Hoteles } from "./Hoteles";
 import { ListHistorial } from './ListHistorial';
 import { ListServicios } from "./ListServicios";
+import { Link } from "react-router-dom";
 
 export default function ListFactura() {
   const [factura, setFactura] = useState([]);
@@ -53,6 +54,8 @@ export default function ListFactura() {
   return (
     <>
       <main className="container seccion">
+        
+      <Link className="boton boton-verde" to={"/panel-adminhotel"}>Regresar</Link>
         <h1>Facturas de  </h1>
 
         <table className="propiedades">

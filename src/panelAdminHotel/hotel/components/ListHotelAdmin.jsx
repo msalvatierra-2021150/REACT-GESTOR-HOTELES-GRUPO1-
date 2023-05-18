@@ -83,32 +83,12 @@ export const ListHotelAdmin = () => {
     fontWeight: "bold"
   }
 
-  const eliminarHotel = async (id) => {
-    let result = await apiHotelDelete(id);
-    if (result) {
-      setListHotels(listHotels.filter((h) => h._id !== id));
-      Swal.fire({
-        icon: 'success',
-        title: 'Hotel Eliminado',
-        text: 'Se ha eliminado correctamente',
-        showConfirmButton: true,
-        confirmButtonText: "Ok"
-      })
-    } else {
-      Swal.fire({
-        icon: 'info',
-        title: 'Error',
-        text: 'No se ha podido eliminar',
-        showConfirmButton: true,
-        confirmButtonText: "Ok"
-      })
-    }
-  }
+  
 
   return (
     <>
       <main className="container seccion ">
-
+      <Link className="boton boton-verde" to={"/panel-adminhotel"}>Regresar</Link>
         <div className="container" style={searchStyle}>
           <input type="text"
             placeholder="Buscar usuario... " style={searchTermStyle}

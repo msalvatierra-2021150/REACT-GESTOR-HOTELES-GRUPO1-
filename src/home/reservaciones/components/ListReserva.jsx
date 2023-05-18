@@ -72,7 +72,7 @@ export const ListReserva = () => {
     const confirmarReserva = async () => {
         let result = await apiCartReserva(idreservacion);
         if (result) {
-            localStorage.removeItem('idReservacion');
+            
             Swal.fire({
                 icon: 'success',
                 title: 'Reserva Confirmada',
@@ -114,7 +114,7 @@ export const ListReserva = () => {
                                         <tr key={h._id}>
                                             <td>
                                                 <div className="product-item">
-                                                    <a className="product-thumb" href="#"><img src="https://www.bootdey.com/image/220x180/FF0000/000000" alt="Product" /></a>
+                                                    <a className="product-thumb" href="#"><img src={h.img} alt="Product" /></a>
                                                     <div className="product-info">
                                                         <h4 className="product-title">Habitación De lujo, 1 King</h4>
                                                         <span><em>Capacidad:</em> {h.capacidad}</span>

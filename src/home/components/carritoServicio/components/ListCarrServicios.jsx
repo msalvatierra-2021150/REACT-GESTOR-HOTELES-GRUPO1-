@@ -45,10 +45,12 @@ export const ListCarrServicios = () => {
       <h1> Servicios</h1>
 
       <div className="container padding-bottom-3x mb-1">
-        <main className="contenedor seccion">
+
+        <main className="contenedor seccion ">
+        <Link className="boton boton-verde" to={"/home"}>Regresar</Link>
           {servicio.map((s) => {
             return (
-              <div className="container">
+              <div className="container ">
                 <div className="container">
                   <div className="contenedor-anuncios" key={s._id}>
                     <div className="anuncio">
@@ -77,7 +79,7 @@ export const ListCarrServicios = () => {
                     <div>
                       <img
                         key={s.itemId}
-                        src="https://media.istockphoto.com/id/592392184/es/vector/conjunto-plano-de-iconos-de-utilidad-p%C3%BAblica.jpg?s=612x612&w=0&k=20&c=wmz_pXTL9dvYYbPykof6uQ423mmiJL3Ue2nNS5d3II4="
+                        src="https://watermark.lovepik.com/photo/20211126/large/lovepik-image-of-hotel-management-service-personnel-picture_501124936.jpg"
                         alt=""
                       />
                     </div>

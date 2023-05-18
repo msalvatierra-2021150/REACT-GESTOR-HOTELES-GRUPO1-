@@ -77,7 +77,7 @@ export const FormServicio = ({ serviciosProp, titleButton, option }) => {
 
 
                     </fieldset>
-                    <button type="submit" className="btn btn-success" onClick={crud}>{titleButton}</button>
+                    <button type="submit" className="btn btn-success" >{titleButton}</button>
                 </form>
             </main>
         </>

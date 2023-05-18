@@ -2,6 +2,7 @@ import logo from "../../img/logo.svg"
 import dark from "../../img/dark-mode.svg";
 import barras from "../../img/barras.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const NavbarInicial = () => {
     const [isOn, setIsOn ] = useState(false);
@@ -15,9 +16,9 @@ export const NavbarInicial = () => {
                     <header className="header">
                     <div className="contenedor contenido-header">
                       <div className="barra">
-                        <a href="/index.html">
+                      <Link to="/">
                           <img src={logo} alt="logotipo de Hotel Vago" />
-                        </a>
+                        </Link>
                         <div className="mobile-menu" onClick={navegacionResponsive}>
                           <img src={barras}/>
                         </div>

@@ -64,7 +64,9 @@ export const ListUsuario = () => {
   }
   return (
     <>
+
       <main className="container seccion">
+   
         <h1>Perfil</h1>
         {/*
                <Link to="/create-hotel" className="boton boton-verde">

@@ -6,6 +6,7 @@ import { apiCarritoServicios } from "../api/apiServicios";
 import { apiCartServicioUpdate } from "../api/apiServicios";
 import { apiCartServicioDelete } from "../api/apiServicios";
 import { apiCartServicioDeleteAll } from "../api/apiServicios";
+import Swal from "sweetalert2";
 
 export const ListCarr = () => {
   const [carTservicio, setCartServicio] = useState([]);
@@ -14,7 +15,7 @@ export const ListCarr = () => {
     const getListServiciosCartFromAPI = await apiCarritoServicios();
     console.log(getListServiciosCartFromAPI);
     setCartServicio(getListServiciosCartFromAPI);
-    sumar()
+    sumar();
   };
 
   useEffect(() => {
@@ -46,18 +47,36 @@ export const ListCarr = () => {
     viewServicioCartList();
   }
   const eliminarAll = async ()=>{
+    const result = await apiCartServicioDeleteAll();
+
+    if (result) {
+      localStorage.removeItem('existeCar');
+      Swal.fire({
+          icon: 'success',
+          title: 'Servicios Eliminados',
+          text: 'Se ha eliminado correctamente',
+          showConfirmButton: true,
+          confirmButtonText: "Ok"
+      }).then((result) => {
+          if (result.isConfirmed) {
+              window.location.href = "/carrito-servicios";
+          }
+      })
+  } else {
+      Swal.fire({
+          icon: 'info',
+          title: 'Error',
+          text: 'No se ha podido eliminar',
+          showConfirmButton: true,
+          confirmButtonText: "Ok"
+      })
+  }
     
-    localStorage.setItem('existeCar', 'false');
-    await apiCartServicioDeleteAll();
-    viewServicioCartList();
   }
   let sumare = 0;
   const sumarTotal = (suma)=>{
   
     sumare = suma + sumare;
-
-    
-    
   }
  
   

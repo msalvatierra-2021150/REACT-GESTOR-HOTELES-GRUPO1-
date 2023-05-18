@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom"
 import { habitByHotel } from "../api/habitaByHotel";
-
+import { NavbarInicial } from "../../login/components/NavbarInicial";
+const idReserva = localStorage.getItem('idReservacion');
 export const UserListHabita = () => {
-
+    const token = localStorage.getItem("token");
     const loc = useLocation();
     const id = loc.state;
     localStorage.setItem('id', id);
@@ -25,6 +26,7 @@ export const UserListHabita = () => {
 
     return (
         <>
+        {localStorage.getItem("token") ?  [] : [<NavbarInicial/>]}
             <main className="contenedor seccion">
                 <Link to="/hoteles-lista"
                     className="boton boton-verde mt-3"
@@ -58,9 +60,11 @@ export const UserListHabita = () => {
                                                     <p>Capacidad: {u.capacidad}</p>
                                                 </li>
                                             </ul>
-                                            <a href="#" className="boton boton-amarillo-block"
-                                            >Reservar ahora</a
-                                            >
+                                            {(idReserva === null)
+                                        ? token === null ? [<Link className="boton boton-amarillo-block" to={`/login`}>Reservar</Link>]
+                                        :[<Link className="boton boton-amarillo-block" to={`/reservas-create?habitacion=${u._id}`}>Reservar</Link>]
+                                        : <Link className="boton boton-amarillo-block" to={`/reservas-add?habitacion=${u._id}&reserva=${idReserva}`}>Agregar a tu reserva</Link>
+                                    }
                                         </div>
                                     </div>
                                 </div>
@@ -73,34 +77,7 @@ export const UserListHabita = () => {
                 </div>
                 <div className="contenedor-anuncios" >
 
-                    {/* {
-                        listHabita.map((u) => {
-                            return (
-                                <div className="anuncio" key={u._id}>
-                                    <img
-                                        loading="lazy"
-                                        src={u.img}
-                                        alt="Habitacion img"
-                                    />
-                                    <div className="contenido-anuncio">
-                                        <p>{u.descripcion}</p>
-                                        <p className="precio">Q.{u.precio}</p>
-                                        <ul className="iconos-caracteristicas">
-                                            <li>
-                                                <p>Capacidad: {u.capacidad}</p>
-                                            </li>
-                                        </ul>
-                                        <a href="#" className="boton boton-amarillo-block"
-                                        >Reservar ahora</a
-                                        >
-                                    </div>
-                                </div>
-
-
-                            )
-                        })
-
-                    } */}
+                   
                 </div>
             </main>
         </>

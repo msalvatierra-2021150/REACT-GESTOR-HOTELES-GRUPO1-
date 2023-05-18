@@ -74,7 +74,7 @@ export const AddHabitacion = () => {
                 <div className="row">
                     <div className="col"></div>
                     <div className="col">
-                        <Link className="boton boton-verde" to={"/habitaciones"}>Cancelar</Link>
+                        <Link className="boton boton-verde" to={"/see-habitaciones"}>Cancelar</Link>
                     </div>
                     <div className="col">
                         <button className="boton boton-verde"

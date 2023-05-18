@@ -59,6 +59,7 @@ export const ListDepartamentos = () => {
     <>
       <main className="container seccion">
         <h1>Administrador de Hoteles</h1>
+        <Link className="boton boton-verde" to={"/panel-adminapp"}>Regresar</Link>
         <Link to="/create-departamento" className="boton boton-verde">
           Nuevo Departamento
         </Link>

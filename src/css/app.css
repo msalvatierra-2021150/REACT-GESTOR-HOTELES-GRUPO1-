@@ -197,6 +197,10 @@ h3 {
 h4 {
     font-size: 2.6rem;
 }
+
+p {
+    text-align: center;
+}
 .seccion {
     margin-bottom: 2.5rem;
     margin-top: 2.5rem;
@@ -343,10 +347,8 @@ h4 {
     border: 1px solid #333;
     color: #fff;
 }
-.no-webp .inicio {
-    background-image: url(../img/header.jpg);
-}
-.webp .inicio {
+
+.inicio {
     background-image: url(../img/header.webp);
 }
 .header {
@@ -533,10 +535,8 @@ h4 {
 .iconos-caracteristicas li p {
     font-weight: 900;
 }
-.no-webp .imagen-contacto {
-    background-image: url(../img/encuentra.jpg);
-}
-.webp .imagen-contacto {
+
+.imagen-contacto {
     background-image: url(../img/encuentra.webp);
 }
 .imagen-contacto {

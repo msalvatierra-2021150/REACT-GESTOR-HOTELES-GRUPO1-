@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UpdateTipoEvento } from "./UpdateTipoEvento";
 import { TipoEvento } from "../models/tipoEvento.models";
 import { apiTipoEventoDelete } from "../api/apiTipoEvento"; 
-import { Swal } from "sweetalert2";
+import Swal from "sweetalert2";
 
 export const ListTipoEvento = () => {
   
@@ -38,18 +38,19 @@ export const ListTipoEvento = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
+  
     const eliminarTipoEvento = async(id) => {
     let result = await apiTipoEventoDelete(id);
-    if (result) {
+    console.log(result);
+    if (result) { 
       setListTE(listTE.filter((h) => h._id !== id));
       Swal.fire({
-        icon: 'success',
-        title: 'Hotel Eliminado',
-        text: 'Se ha eliminado correctamente',
+        icon: "success",
+        title: "Evento Eliminado",
+        text: "Se ha eliminado correctamente",
         showConfirmButton: true,
-        confirmButtonText: "Ok"
-    })
+        confirmButtonText: "Ok",
+      });
     } else {
       Swal.fire({
         icon: 'info',
@@ -64,6 +65,7 @@ export const ListTipoEvento = () => {
     <>
       <main className="container seccion">
         <h1>Administrador de Tipo de Eventos</h1>
+        <Link className="boton boton-verde" to={"/panel-adminapp"}>Regresar</Link>
         <Link to="/create-tipoevento" className="boton boton-verde">
           Nuevo Tipo de Evento
         </Link>

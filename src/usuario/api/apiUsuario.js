@@ -12,9 +12,8 @@ if (token) {
 let URL = '';
 
 export const apiUsuario = async () => {
-    console.log(userRole);
     if (userRole == "ADMIN_APP") {
-        URL = "http://localhost:8080/api/admin/";   
+        URL = "http://localhost:8080/api/admin/";
     } else if (userRole == "ADMIN_HOTEL") {
         URL = "http://localhost:8080/api/adminHotel/";
     } else {
@@ -23,6 +22,7 @@ export const apiUsuario = async () => {
     try {
         const { data: { listaUsuarios } } = await axios.get(`${URL}mostrar`,
         { headers: { "x-token": token } });
+       console.log(listaUsuarios);
        console.log(listaUsuarios);
         return listaUsuarios;
 

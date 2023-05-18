@@ -14,10 +14,10 @@ const URLE = "http://localhost:8080/api/evento/";
 export const apiHotelHabitaciones = async (id) => {
     try {
 
-        const { data: { arregloHabitaciones } } = await axios.get(`${URL}habitacionesH/${id}`,
+        const { data: { arreglo } } = await axios.get(`${URL}habitacionesH/${id}`,
         { headers: { "x-token": token } });
-       console.log(arregloHabitaciones);
-        return arregloHabitaciones;
+       console.log(arreglo);
+        return arreglo;
 
     } catch ({ response: { data: { message } } }) {
         return data.message;

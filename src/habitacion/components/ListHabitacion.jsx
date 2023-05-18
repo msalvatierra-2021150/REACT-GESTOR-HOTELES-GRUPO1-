@@ -63,6 +63,7 @@ export const ListHabitacion = () => {
     <>
       <main className="container seccion">
         <h1>Administrador de Hoteles</h1>
+        <Link className="boton boton-verde" to={"/panel-adminhotel"}>Regresar</Link>
         <Link to="/create-habitacion" className="boton boton-verde">
           Nueva habitacion
         </Link>
@@ -89,7 +90,7 @@ export const ListHabitacion = () => {
                   <th className="text-center">{h._id} </th>
                   <td className="text-center">{h.precio}</td>
                   <td className="text-center">{h.descripcion}</td>
-                  <td className="text-center">{h.img}</td>
+                  <td className="text-center"> <img src={h.img} className="img-fluid" /></td>
                   <td className="text-center">{h.capacidad}</td>
                   <td className="text-center">{h.hotel.nombre}</td>
                   <td className="text-center">{h.disponible}</td>

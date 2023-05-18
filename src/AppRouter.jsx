@@ -57,116 +57,123 @@ import { ListHabita } from "./panelAdminHotel/hotel/components/ListHabita"
 import { ListReservas } from "./panelAdminHotel/hotel/components/ListReservas"
 import { ReservaUser } from "./panelAdminHotel/hotel/components/ReservaUser"
 import { ListHotelAdmin } from "./panelAdminHotel/hotel/components/ListHotelAdmin"
+import { MainView } from "./MainView"
 
 export const AppRouter = () => {
     return (
         <>
             <NavBar />
             <Routes>
+
                 {/* Generales*/}
                 {/* Chequea si  el usuario esta logeado o no*/}
+                <Route path="/" element={!isUserLogged() ? <MainView /> : <Navigate to="/home" />}></Route>
                 <Route path="/login" element={!isUserLogged() ? <Login /> : <Navigate to="/home" />}>
                 </Route>
                 <Route path="/perfil" element={isUserLogged() ? <ListUsuario /> : <Navigate to="/login" />}>
                 </Route>
                 <Route path="/signin" element={!isUserLogged() ? <CreateUsuario /> : <Navigate to="/login" />}>
                 </Route>
-                <Route path="/factura" element={isAdminAppAuthenticated() || isAdminHotelAuthenticated() || isUsuarioAuthenticated ? (<ListFactura />) : (<Navigate to="/login" />)}>
+                <Route path="/factura" element={
+                    isAdminAppAuthenticated() || 
+                    isAdminHotelAuthenticated() || 
+                    isUsuarioAuthenticated ? 
+                    (<ListFactura />) : (<Navigate to="/login" />)}>
                 </Route>
 
                 {/* RUTAS SOLO PARA ADMIN_APP*/}
                 {/* FUNCIONES DEL ADMIN_APP EN HOTEL*/}
-                <Route path="/panel-adminapp" element={isAdminAppAuthenticated() ? (<PanelAdminApp />) : (<Navigate to="/login" />)} >
+                <Route path="/panel-adminapp" element={isAdminAppAuthenticated() ? (<PanelAdminApp />) : (<Navigate to="." replace/>)} >
                 </Route>
                 {/* Chequea si es ADMIN_APP para redirigirlo al panel de control Hotel*/}
-                <Route path="/hoteles" element={isAdminAppAuthenticated() ? (<ListHotel />) : (<Navigate to="/login" />)} >
+                <Route path="/hoteles" element={isAdminAppAuthenticated() ? (<ListHotel />) : (<Navigate to="." />)} >
                 </Route>
                 {/* Chequea si es ADMIN_APP para redirigirlo al agregar Hotel*/}
-                <Route path="/create-hotel" element={isAdminAppAuthenticated() ? (<CreateHotel />) : (<Navigate to="/login" />)} >
+                <Route path="/create-hotel" element={isAdminAppAuthenticated() ? (<CreateHotel />) : (<Navigate to="." />)} >
                 </Route>
                 {/* Chequea si es ADMIN_APP para redirigirlo al panel de control Rol*/}
-                <Route path="/roles" element={isAdminAppAuthenticated() ? (<ListRol />) : (<Navigate to="/login" />)} >
+                <Route path="/roles" element={isAdminAppAuthenticated() ? (<ListRol />) : (<Navigate to="." />)} >
                 </Route>
                 {/* Chequea si es ADMIN_APP para redirigirlo al agregar Rol*/}
-                <Route path="/create-rol" element={isAdminAppAuthenticated() ? (<CreateRol />) : (<Navigate to="/login" />)} >
+                <Route path="/create-rol" element={isAdminAppAuthenticated() ? (<CreateRol />) : (<Navigate to="." />)} >
                 </Route>
                 {/* Chequea si es ADMIN_APP para redirigirlo al panel de control Departamentos*/}
-                <Route path="/departamentos" element={isAdminAppAuthenticated() ? (<ListDepartamentos />) : (<Navigate to="/login" />)} >
+                <Route path="/departamentos" element={isAdminAppAuthenticated() ? (<ListDepartamentos />) : (<Navigate to="." />)} >
                 </Route>
                 {/* Chequea si es ADMIN_APP para redirigirlo al agregar Departamentos*/}
-                <Route path="/create-departamento" element={isAdminAppAuthenticated() ? (<CreateDepartamentos />) : (<Navigate to="/login" />)} >
+                <Route path="/create-departamento" element={isAdminAppAuthenticated() ? (<CreateDepartamentos />) : (<Navigate to="." />)} >
                 </Route>
                 {/* Chequea si es ADMIN_APP para redirigirlo al panel de control Usuarios*/}
-                <Route path="/usuarios" element={isAdminAppAuthenticated() ? (<ListUsuarios />) : (<Navigate to="/login" />)} >
+                <Route path="/usuarios" element={isAdminAppAuthenticated() ? (<ListUsuarios />) : (<Navigate to="." />)} >
                 </Route>
                 {/* FUNCIONES DEL ADMIN_APP EN TIPO DE EVENTO */}
-                <Route path="/tipoevento" element={isAdminAppAuthenticated() ? (<ListTipoEvento />) : (<Navigate to="/login" />)} >
+                <Route path="/tipoevento" element={isAdminAppAuthenticated() ? (<ListTipoEvento />) : (<Navigate to="." />)} >
                 </Route>
-                <Route path="/create-tipoevento" element={isAdminAppAuthenticated() ? (<CreateTipoEvento />) : (<Navigate to="/login" />)} >
+                <Route path="/create-tipoevento" element={isAdminAppAuthenticated() ? (<CreateTipoEvento />) : (<Navigate to="." />)} >
                 </Route>
-                <Route path="/graficas" element={isAdminAppAuthenticated() ? (<SimpleBarras />) : (<Navigate to="/login" />)}></Route>
+                <Route path="/graficas" element={isAdminAppAuthenticated() ? (<SimpleBarras />) : (<Navigate to="." />)}></Route>
                 {/*graficas */}
-                <Route path="/grafica-habitaciones" element={isAdminAppAuthenticated() ? (<MostrarGrafica />) : (<Navigate to="/login" />) } >
+                <Route path="/grafica-habitaciones" element={isAdminAppAuthenticated() ? (<MostrarGrafica />) : (<Navigate to="." />) } >
                 </Route>
 
                 {/* RUTAS SOLO PARA ADMIN_HOTEL*/}
                 <Route path="/panel-adminhotel" element={isAdminHotelAuthenticated() ? (<PanelAdminHotel />) : (<Navigate to="/login" />)} >
                 </Route>
                 {/* FUNCIONES DEL ADMIN_HOTEL EN HABITACIONES */}
-                <Route path="/habitaciones" element={isAdminHotelAuthenticated() ? (<ListHabitacion />) : (<Navigate to="/login" />)} >
+                <Route path="/habitaciones" element={isAdminHotelAuthenticated() ? (<ListHabitacion />) : (<Navigate to="." />)} >
                 </Route>
-                <Route path="/create-habitacion" element={isAdminHotelAuthenticated() ? (<CreateHabitacion />) : (<Navigate to="/login" />)} >
-                </Route>
-                {/* FUNCIONES DEL ADMIN_HOTEL EN SERVICIOS */}
-                <Route path="/servicios" element={isAdminHotelAuthenticated() ? (<ListServicios />) : (<Navigate to="/login" />)} >
+                <Route path="/create-habitacion" element={isAdminHotelAuthenticated() ? (<CreateHabitacion />) : (<Navigate to="." />)} >
                 </Route>
                 {/* FUNCIONES DEL ADMIN_HOTEL EN SERVICIOS */}
-                <Route path="/create-servicio" element={isAdminHotelAuthenticated() ? (<CreateServicio />) : (<Navigate to="/login" />)} >
+                <Route path="/servicios" element={isAdminHotelAuthenticated() ? (<ListServicios />) : (<Navigate to="." />)} >
                 </Route>
-                <Route path="/list-evento" element={isAdminHotelAuthenticated() ? (<ListEvento />) : (<Navigate to="/login" />)}>
+                {/* FUNCIONES DEL ADMIN_HOTEL EN SERVICIOS */}
+                <Route path="/create-servicio" element={isAdminHotelAuthenticated() ? (<CreateServicio />) : (<Navigate to="." />)} >
                 </Route>
-                <Route path="/create-evento" element={isAdminHotelAuthenticated() ? (<CreateEvento />) : (<Navigate to="/login" />)}>
+                <Route path="/list-evento" element={isAdminHotelAuthenticated() ? (<ListEvento />) : (<Navigate to="." />)}>
+                </Route>
+                <Route path="/create-evento" element={isAdminHotelAuthenticated() ? (<CreateEvento />) : (<Navigate to="." />)}>
                 </Route>
                 {/* FUNCIONES DEL HOTEL PARA ADMIN_HOTEL*/}
-                <Route path="/lista-hoteles-admin" element={isAdminHotelAuthenticated() ? (<ListHotelAdmin/>) : (<Navigate to="/login" />) } >
+                <Route path="/lista-hoteles-admin" element={isAdminHotelAuthenticated() ? (<ListHotelAdmin/>) : (<Navigate to="." />) } >
                 </Route>
-                <Route path="/lista-habitaciones" element={isAdminHotelAuthenticated() ? (<ListHabita/>) : (<Navigate to="/login" />) } >
+                <Route path="/lista-habitaciones" element={isAdminHotelAuthenticated() ? (<ListHabita/>) : (<Navigate to="." />) } >
                 </Route>
-                <Route path="/lista-reservas" element={isAdminHotelAuthenticated() ? (<ListReservas/>) : (<Navigate to="/login" />) } >
+                <Route path="/lista-reservas" element={isAdminHotelAuthenticated() ? (<ListReservas/>) : (<Navigate to="." />) } >
                 </Route>
-                <Route path="/usuario-reservas" element={isAdminHotelAuthenticated() ? (<ReservaUser/>) : (<Navigate to="/login" />) } >
+                <Route path="/usuario-reservas" element={isAdminHotelAuthenticated() ? (<ReservaUser/>) : (<Navigate to="." />) } >
                 </Route>
 
 
                 {/* RUTAS SOLO PARA USUARIOS*/}
                 {/* FUNCIONES DEL USUARIO AL LOGEARSE*/}
-                <Route path="/home" element={isUsuarioAuthenticated() ? (<Home />) : (<Navigate to="/login" />)} >
+                <Route path="/home" element={isUsuarioAuthenticated() ? (<Home />) : (<Navigate to="." />)} >
                 </Route>
                 {/* FUNCIONES DEL USUARIO EN HABITACIONES */}
-                <Route path="/see-habitaciones" element={isUsuarioAuthenticated() ? (<ListHabitaciones />) : (<Navigate to="/login" />)} >
+                <Route path="/see-habitaciones" element={isUsuarioAuthenticated() ? (<ListHabitaciones />) : (<Navigate to="/." />)} >
                 </Route>
                 {/* FUNCIONES DEL USUARIO EN HABITACIONES */}
-                <Route path="/habitaciones-hotel" element={isUsuarioAuthenticated() ? (<ListHabitacionesHotel />) : (<Navigate to="/login" />)} >
+                <Route path="/habitaciones-hotel" element={isUsuarioAuthenticated() ? (<ListHabitacionesHotel />) : (<Navigate to="." />)} >
                 </Route>
                 {/* FUNCIONES DEL USUARIO EN RESERVACIONES */}
-                <Route path="/reservas-create" element={isUsuarioAuthenticated() ? (<CreateReserva />) : (<Navigate to="/login" />)} >
+                <Route path="/reservas-create" element={isUsuarioAuthenticated() ? (<CreateReserva />) : (<Navigate to="." />)} >
                 </Route>
-                <Route path="/reservas-add" element={isUsuarioAuthenticated() ? (<AddHabitacion />) : (<Navigate to="/login" />)} >
+                <Route path="/reservas-add" element={isUsuarioAuthenticated() ? (<AddHabitacion />) : (<Navigate to="." />)} >
                 </Route>
-                <Route path="/reservas-show" element={isUsuarioAuthenticated() ? (<ListReserva />) : (<Navigate to="/login" />)} >
+                <Route path="/reservas-show" element={isUsuarioAuthenticated() ? (<ListReserva />) : (<Navigate to="." />)} >
                 </Route>
-                <Route path="/carrito-servicios" element={isUsuarioAuthenticated() ? <ListCarrServicios /> : <Navigate to="/login" />}>
+                <Route path="/carrito-servicios" element={isUsuarioAuthenticated() ? <ListCarrServicios /> : <Navigate to="." />}>
                 </Route>
-                <Route path="/carrito" element={isUsuarioAuthenticated() ? <ListCarr /> : <Navigate to="/login" />}>
+                <Route path="/carrito" element={isUsuarioAuthenticated() ? <ListCarr /> : <Navigate to="." />}>
                 </Route>
-                <Route path="/generar-factura" element={isUsuarioAuthenticated() ? <CreateFactura /> : <Navigate to="/login" />}>
+                <Route path="/generar-factura" element={isUsuarioAuthenticated() ? <CreateFactura /> : <Navigate to="." />}>
                 </Route>
                 {/*Funcionalidades consultas*/}
-                <Route path="/hoteles-lista" element={isUsuarioAuthenticated() ? (<UserListHotel/>) : (<Navigate to="/login" />) } >
+                <Route path="/hoteles-lista" element={<UserListHotel/>} >
                 </Route>
-                <Route path="/habitaciones-lista" element={isUsuarioAuthenticated() ? (<UserListHabita/>) : (<Navigate to="/login" />) } >
+                <Route path="/habitaciones-lista" element={<UserListHabita/> } >
                 </Route>
-                <Route path="/eventos-lista" element={isUsuarioAuthenticated() ? (<UserEventList/>) : (<Navigate to="/login" />) } >
+                <Route path="/eventos-lista" element={<UserEventList/>} >
                 </Route>
             </Routes>
             <Footer />

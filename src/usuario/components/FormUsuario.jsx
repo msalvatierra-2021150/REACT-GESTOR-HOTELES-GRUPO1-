@@ -44,7 +44,8 @@ export const FormUsuario = ({ userProp, titleButton, option }) => {
                         <label htmlFor="correo">Correo</label>
                         <input
                             {...register("correo")}
-                            type="text"
+                            type="email"
+                            
                             className="form-control"
                             value={usuario.correo}
                             onChange={({ target: { value } }) => {
@@ -58,7 +59,7 @@ export const FormUsuario = ({ userProp, titleButton, option }) => {
                         <input
 
                             {...register("password")}
-                            type="text"
+                            type="password"
                             className="form-control"
                             value={usuario.password}
                             onChange={({ target: { value } }) => {

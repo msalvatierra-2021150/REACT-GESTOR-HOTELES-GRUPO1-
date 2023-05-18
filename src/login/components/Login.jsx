@@ -72,7 +72,7 @@ export const Login = () => {
           </fieldset>
         </form>
         <Link to="/signin" className="boton boton-azul w-100">Eres nuevo? Crea una cuenta</Link>
-
+        <Link className="boton boton-verde mt-3" to="/">Volver</Link>
       </main>
     </>
   );

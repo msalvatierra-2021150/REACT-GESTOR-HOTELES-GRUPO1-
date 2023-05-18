@@ -10,8 +10,11 @@ export const NavBar = () => {
     const [isOn, setIsOn ] = useState(false);
 
     const logOut = () => {
+      localStorage.removeItem('idReservacion');
+      localStorage.removeItem('id');
+      localStorage.removeItem('existeCar');
         localStorage.removeItem('token');
-        window.location.href = "/login";
+        window.location.href = "/";
     }
 
     function navegacionResponsive() {
@@ -25,9 +28,9 @@ export const NavBar = () => {
                     <header className="header">
                     <div className="contenedor contenido-header">
                       <div className="barra">
-                        <a href="/index.html">
+                        <Link to="/">
                           <img src={logo} alt="logotipo de Hotel Vago" />
-                        </a>
+                        </Link>
                         <div className="mobile-menu" onClick={navegacionResponsive}>
                           <img src={barras}/>
                         </div>

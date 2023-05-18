@@ -170,7 +170,7 @@ export const FormHotel = ({ hotelProp, titleButton, option }) => {
                         />
                         {errors.img && (<span>{errors.img.message}</span>)}
                         <label htmlFor="descripcion">Descripcion</label>
-                        <input
+                        <textarea
                             {...register("descripcion")}
                             type="text"
                             className="form-control"

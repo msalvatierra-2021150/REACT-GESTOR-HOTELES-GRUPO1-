@@ -29,8 +29,7 @@ export const GraficasHabitaciones = () => {
      <ResponsiveContainer aspect={4}>
             <BarChart data={hotel} width={500} height={300} margin={{top:2,right:30,left:20,bottom:30}}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="habitacion_id">
-                    
+                <XAxis dataKey="id">
                 </XAxis>
                 <YAxis  domain={[0, 'dataMax+5']}/>
                 <Tooltip/>

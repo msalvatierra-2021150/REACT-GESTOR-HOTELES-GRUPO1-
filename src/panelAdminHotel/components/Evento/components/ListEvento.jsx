@@ -89,6 +89,7 @@ export const ListEvento = () => {
     <>
       <main className="container seccion">
       <h1>Administrador de Evento</h1>
+      <Link className="boton boton-verde" to={"/panel-adminhotel"}>Regresar</Link>
       <Link to="/create-evento" className="boton boton-verde">
         Nuevo Evento
       </Link>
